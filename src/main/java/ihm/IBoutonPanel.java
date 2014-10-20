@@ -3,5 +3,5 @@ package ihm;
 /**
  * Created by mds on 01/10/14.
  */
-public class IBoutonPanel {
+public interface IBoutonPanel {
 }
