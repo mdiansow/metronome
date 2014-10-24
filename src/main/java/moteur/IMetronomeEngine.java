@@ -5,7 +5,7 @@ import command.Command;
 /**
  * Created by mds on 01/10/14.
  */
-public interface MetronomeEngine {
+public interface IMetronomeEngine {
 	
 	public Integer getTempo();
 	public Integer getBarLength();
@@ -14,5 +14,4 @@ public interface MetronomeEngine {
 	public void setRunning(Boolean on);
 	public Boolean isRunning();
 	public void setCmd (Command uneCommande, String eventName);
-	
 }
