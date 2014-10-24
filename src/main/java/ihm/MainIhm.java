@@ -7,11 +7,10 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
-
 /**
  * Created by jerem on 20/10/14.
  */
-public class Main extends  Application {
+public class MainIhm extends  Application {
 
 
     @Override
@@ -20,6 +19,7 @@ public class Main extends  Application {
         primaryStage.setTitle("Notre Super Métronome");
         primaryStage.setScene(new Scene(root, 550, 250));
         primaryStage.show();
+
     }
     public static void main(String[] args) {
         launch(args);
