@@ -4,10 +4,16 @@ package command;
  * Created by mds on 01/10/14.
  */
 public class BeetEvnt implements Command{
-
+	InvokerEvent controler;
+	
+	
+	@override
 	public void execute() {
-		// TODO Auto-generated method stub
+		this.controler.beetEvnt();
 		
+	}
+	public BeetEvnt(InvokerEvent pControler) {
+		this.controler = pControler;
 	}
 
 }

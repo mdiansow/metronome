@@ -5,8 +5,14 @@ package command;
  */
 public class BarEvnt implements Command {
 
+	InvokerEvent controler;
+
+	 @override
 	public void execute() {
-		// TODO Auto-generated method stub
+		this.controler.barEvnt();
 		
+	}
+	public BarEvnt(InvokerEvent pControler) {
+		this.controler = pControler;
 	}
 }
