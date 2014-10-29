@@ -32,7 +32,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     /**
      * The commands about the metronome tempo.
      */
-    private HashMap<String, Command> myCommand = new HashMap<>();
+    private HashMap<String, Command> myCommand = new HashMap<String, Command>();
 
     private boolean destroy = true;
 
@@ -72,7 +72,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
             this.myCommand.put(eventName, uneCommande);
     }
 
-    public MetronomeEngineImpl(int bar, int tempo) {
+    public MetronomeEngineImpl(final int bar, final int tempo) {
         this.tempo = tempo;
         this.bar = bar;
         new Thread(new Runnable() {
