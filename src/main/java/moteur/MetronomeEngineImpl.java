@@ -1,6 +1,6 @@
 package moteur;
 
-import command.Command;
+import command.ICommand;
 
 import java.util.HashMap;
 
@@ -32,7 +32,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     /**
      * The commands about the metronome tempo.
      */
-    private HashMap<String, Command> myCommand = new HashMap<String, Command>();
+    private HashMap<String, ICommand> myCommand = new HashMap<>();
 
     private boolean destroy = true;
 
@@ -67,12 +67,12 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     }
 
     @Override
-    public void setCmd(Command uneCommande, String eventName) {
+    public void setCmd(ICommand uneCommande, String eventName) {
         if (uneCommande != null && eventName != null)
             this.myCommand.put(eventName, uneCommande);
     }
 
-    public MetronomeEngineImpl(final int bar, final int tempo) {
+    public MetronomeEngineImpl(int bar, int tempo) {
         this.tempo = tempo;
         this.bar = bar;
         new Thread(new Runnable() {
@@ -81,18 +81,23 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
                 while (destroy) {
                     if (isRunning) {
                         /*Command beatCmd = myCommand.get("beat");
-                        beatCmd.execute()*/;
+                        beatCmd.execute()*/
+                        ;
                         try {
-                            System.out.println("tempo");
+                            // System.out.println("tempo");
                             // Call tempo command.
-                            myCommand.get("tempo").execute();
+                            ICommand tempoCmd = myCommand.get("beet");
+                            if (tempoCmd != null)
+                                tempoCmd.execute();
                             count %= bar;
-                            if(count++ == 0){
+                            if (count++ == 0) {
                                 // Call bar command
-                                myCommand.get("bar").execute();
-                                System.out.println("bar");
+                                ICommand barCmd = myCommand.get("bar");
+                                if (barCmd != null)
+                                    barCmd.execute();
+                                // System.out.println("bar");
                             }
-                            Thread.sleep(60/tempo);
+                            Thread.sleep(60 / tempo);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

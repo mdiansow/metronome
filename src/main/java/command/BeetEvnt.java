@@ -1,19 +1,20 @@
 package command;
 
+import controller.IController;
+
 /**
  * Created by mds on 01/10/14.
  */
-public class BeetEvnt implements Command{
-	InvokerEvent controler;
-	
-	
-	@override
-	public void execute() {
-		this.controler.beetEvnt();
-		
-	}
-	public BeetEvnt(InvokerEvent pControler) {
-		this.controler = pControler;
+public class BeetEvnt implements ICommand {
+
+    private IController controller;
+
+    public BeetEvnt(IController controller) {
+        this.controller = controller;
+    }
+
+    public void execute() {
+        controller.handleBeatEvent();
 	}
 
 }

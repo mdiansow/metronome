@@ -1,6 +1,6 @@
 package moteur;
 
-import command.Command;
+import command.ICommand;
 
 /**
  * Created by mds on 01/10/14.
@@ -13,5 +13,5 @@ public interface IMetronomeEngine {
 	public void setBarLengthempo(Integer untemps);
 	public void setRunning(Boolean on);
 	public Boolean isRunning();
-	public void setCmd (Command uneCommande, String eventName);
+	public void setCmd (ICommand uneCommande, String eventName);
 }

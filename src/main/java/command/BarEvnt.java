@@ -1,18 +1,19 @@
 package command;
 
+import controller.IController;
+
 /**
  * Created by mds on 01/10/14.
  */
-public class BarEvnt implements Command {
+public class BarEvnt implements ICommand {
 
-	InvokerEvent controler;
+    private IController controller;
 
-	 @override
-	public void execute() {
-		this.controler.barEvnt();
-		
-	}
-	public BarEvnt(InvokerEvent pControler) {
-		this.controler = pControler;
+    public BarEvnt(IController controller) {
+        this.controller = controller;
+    }
+
+    public void execute() {
+		controller.handleBarEvent();
 	}
 }
