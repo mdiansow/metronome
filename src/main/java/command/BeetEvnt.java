@@ -13,6 +13,7 @@ public class BeetEvnt implements ICommand {
         this.controller = controller;
     }
 
+    @Override
     public void execute() {
         controller.handleBeatEvent();
 	}

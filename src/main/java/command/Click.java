@@ -2,7 +2,7 @@ package command;
 
 import moteur.IMetronomeEngine;
 
-public class Click implements Command {
+public class Click implements ICommand {
 
 	IMetronomeEngine moteur;
 
@@ -13,6 +13,6 @@ public class Click implements Command {
 	
 	@Override
 	public void execute() {
-		this.moteur.click();
+		// this.moteur.click();
 	}
 }
