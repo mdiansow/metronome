@@ -16,6 +16,7 @@ public class ControllerImpl implements IController {
     @Override
     public void handleBeatEvent() {
         System.out.println("###### BEAT #####");
+
     }
 
     @Override

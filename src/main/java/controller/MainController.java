@@ -24,8 +24,6 @@ public class MainController extends Application{
     }catch (IOException exception) {
         throw new RuntimeException(exception);
     }
-
-
 }
         public static void main(String[] args) {
             launch(args);

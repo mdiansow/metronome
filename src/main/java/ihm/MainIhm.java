@@ -26,20 +26,27 @@ public class MainIhm implements Initializable {
     @FXML private Button b3;
     @FXML private Button b4;
 
+    private BoutonPanel bp1;
+    private BoutonPanel bp2;
+    private BoutonPanel bp3;
+    private BoutonPanel bp4;
 
 
-    public void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-    }
 
     @FXML
     public void plop(ActionEvent actionEvent) {
         System.out.println("You clicked me!");
+        bp1.enabled();
 
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        bp1 = new BoutonPanel(b1);
+        bp2 = new BoutonPanel(b2);
+        bp3 = new BoutonPanel(b3);
+        bp4 = new BoutonPanel(b4);
 
     }
 }
