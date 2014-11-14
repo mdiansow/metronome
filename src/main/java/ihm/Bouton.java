@@ -1,17 +1,15 @@
 package ihm;
 
-import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.layout.Background;
 
 
 /**
  * Created by jerem on 14/11/14.
  */
-public class BoutonPanel implements  IBoutonPanel {
+public class Bouton implements IBouton {
     Button monBouton ;
 
-    public BoutonPanel( Button b1){
+    public Bouton(Button b1){
         b1 = monBouton;
 
     }

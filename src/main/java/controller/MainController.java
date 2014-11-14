@@ -1,18 +1,22 @@
 package controller;
 
+import command.BarEvnt;
+import command.BeetEvnt;
+import command.ICommand;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import moteur.IMetronomeEngine;
+import moteur.MetronomeEngineImpl;
 
 import java.io.IOException;
 
 /**
  * Created by jerem on 24/10/14.
  */
-public class MainController extends Application{
-
+public class MainController extends Application implements  IController{
 
     @Override
     public void start(Stage primaryStage) {
@@ -25,7 +29,31 @@ public class MainController extends Application{
         throw new RuntimeException(exception);
     }
 }
-        public static void main(String[] args) {
-            launch(args);
+
+        private static IMetronomeEngine me;
+
+        @Override
+        public void handleBeatEvent() {
+            System.out.println("###### BEAT #####");
+
         }
+
+        @Override
+        public void handleBarEvent() {
+            System.out.println("======= BAR =======");
+        }
+
+    public static void main (String [] args){
+        IController controller = new MainController();
+        me = new MetronomeEngineImpl(3,150);
+        ICommand barCmd = new BarEvnt(controller);
+        ICommand beetCmd = new BeetEvnt(controller);
+        me.setCmd(barCmd,"bar");
+        me.setCmd(beetCmd,"beet");
+        me.setRunning(true);
+
+        launch(args);
+    }
+
+
 }
