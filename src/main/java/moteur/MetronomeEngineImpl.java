@@ -36,42 +36,6 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     private boolean destroy = true;
 
-    @Override
-    public Integer getTempo() {
-        return this.tempo;
-    }
-
-    @Override
-    public Integer getBarLength() {
-        return this.bar;
-    }
-
-    @Override
-    public void setTempo(Integer untemps) {
-        this.tempo = untemps;
-    }
-
-    @Override
-    public void setBarLengthempo(Integer untemps) {
-        this.bar = untemps;
-    }
-
-    @Override
-    public void setRunning(Boolean on) {
-        this.isRunning = on;
-    }
-
-    @Override
-    public Boolean isRunning() {
-        return this.isRunning;
-    }
-
-    @Override
-    public void setCmd(ICommand uneCommande, String eventName) {
-        if (uneCommande != null && eventName != null)
-            this.myCommand.put(eventName, uneCommande);
-    }
-
     public MetronomeEngineImpl(int bar, int tempo) {
         this.tempo = tempo;
         this.bar = bar;
@@ -107,9 +71,40 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
         }).start();
     }
 
-    public static void main(String[] args) {
-        IMetronomeEngine m = new MetronomeEngineImpl(5, 300);
-        m.setRunning(true);
+    @Override
+    public Integer getTempo() {
+        return this.tempo;
+    }
+
+    @Override
+    public void setTempo(Integer untemps) {
+        this.tempo = untemps;
+    }
+
+    @Override
+    public Integer getBarLength() {
+        return this.bar;
+    }
+
+    @Override
+    public void setBarLengthempo(Integer untemps) {
+        this.bar = untemps;
+    }
+
+    @Override
+    public void setRunning(Boolean on) {
+        this.isRunning = on;
+    }
+
+    @Override
+    public Boolean isRunning() {
+        return this.isRunning;
+    }
+
+    @Override
+    public void setCmd(ICommand uneCommande, String eventName) {
+        if (uneCommande != null && eventName != null)
+            this.myCommand.put(eventName, uneCommande);
     }
 }
 
