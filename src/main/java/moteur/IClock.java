@@ -15,5 +15,11 @@ public interface IClock {
 
     void setBarCmd(ICommand c);
 
+    int getBeat();
+
     void setBeat(int beat);
+
+    void setBar(Integer bar);
+
+    int getBar();
 }

@@ -1,19 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihmImpl.Ihm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="577.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8">
+
+<Pane xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="577.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" fx:controller="ihmImpl.Ihm">
     <children>
         <ProgressBar fx:id="pb" layoutX="50.0" layoutY="35.0" progress="0.2" />
         <ProgressIndicator layoutX="60.0" layoutY="69.0" progress="0.0" />
-        <Button fx:id="startFXML" layoutX="102.0" layoutY="188.0" mnemonicParsing="false" text="Start" onAction="#actionButtonStart" />
-        <Button fx:id="stopFXML" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" text="Stop" onAction="#actionButtonStop"/>
-        <Button fx:id="incrFXML" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" text="Increment" onAction="#actionButtonInc" />
-        <Button fx:id="decrFXML" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" text="Decrement" onAction="#actionButtonDecrement" />
-        <TextArea fx:id="textAreaAffichage" layoutX="163.0" layoutY="49.0" prefHeight="75.0" prefWidth="255.0" />
-        <Ellipse fx:id="ledBeetFXML" layoutX="513.0" layoutY="114.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE" />
-        <Ellipse fx:id="ledBarFXML" fill="#000a14" layoutX="513.0" layoutY="67.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE"  />
+        <Button fx:id="startFXML" layoutX="102.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonStart" text="Start" />
+        <Button fx:id="stopFXML" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonStop" text="Stop" />
+        <Button fx:id="incrFXML" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonInc" text="Increment" />
+        <Button fx:id="decrFXML" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonDecrement" text="Decrement" />
+        <Ellipse fx:id="ledBeetFXML" layoutX="513.0" layoutY="115.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
+            <effect>
+                <Lighting>
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </Ellipse>
+        <Ellipse fx:id="ledBarFXML" fill="#000a14" layoutX="514.0" layoutY="53.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
+            <effect>
+                <Lighting>
+                    <bumpInput>
+                        <Shadow />
+                    </bumpInput>
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </Ellipse>
+        <Slider fx:id="sliderFXML" layoutX="20.0" layoutY="12.0" max="360.0" min="120.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="220.0" />
+        <TextField fx:id="tempoField" layoutX="165.0" layoutY="31.0" prefHeight="85.0" prefWidth="286.0" promptText="BEAT">
+            <font>
+                <Font name="System Bold" size="45.0" />
+            </font>
+            <effect>
+                <Glow>
+               <input>
+                  <Reflection />
+               </input></Glow>
+            </effect>
+        </TextField>
         <!--<TextField fx:id="textField"/>-->
     </children>
 </Pane>

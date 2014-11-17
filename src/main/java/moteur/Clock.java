@@ -47,22 +47,28 @@ public class Clock implements IClock {
         barCmd = c;
     }
 
-
+    @Override
     public int getBeat() {
         return beat;
     }
 
     @Override
     public void setBeat(int beat) {
-        this.beat = beat;
+        if (beat > 0) {
+            this.beat = beat;
+        }
     }
 
+    @Override
+    public void setBar(Integer bar) {
+        if (bar > 0) {
+            this.bar = bar;
+        }
+    }
+
+    @Override
     public int getBar() {
         return bar;
-    }
-
-    public void setBar(int bar) {
-        this.bar = bar;
     }
 
     public ICommand getBeatCmd() {

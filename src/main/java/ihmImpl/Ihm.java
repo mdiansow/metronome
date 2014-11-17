@@ -3,12 +3,13 @@ package ihmImpl;
 import controller.MainController;
 import iIhm.IBouton;
 import iIhm.ILed;
+import iIhm.ISound;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.shape.Ellipse;
 
 import java.net.URL;
@@ -43,7 +44,13 @@ public class Ihm implements Initializable {
     @FXML
     private TextArea textAreaAffichage;
 
+    @FXML
+    private TextField tempoField;
+
     private Display display;
+
+    @FXML
+    private Slider sliderFXML;
 
     @FXML
     private ProgressBar pb;
@@ -51,6 +58,7 @@ public class Ihm implements Initializable {
     private Molette mol;
 
     private MainController meController;
+    private ISound sound;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,16 +71,36 @@ public class Ihm implements Initializable {
         led1 = new Led(ledBeetFXML);
         led2 = new Led(ledBarFXML);
 
-        display = new Display(textAreaAffichage);
+        tempoField.setEditable(false);
+        display = new Display(tempoField);
         mol = new Molette(pb);
+
+        // Sound
+        sound = new Sound();
+        meController.setSound(sound);
+
+
+        // Slider
+        sliderFXML.setShowTickLabels(true);
+        sliderFXML.setShowTickMarks(true);
+        sliderFXML.valueProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                int value = oldValue.intValue() - newValue.intValue();
+                if ((Math.abs(value) / 5) > 0) {
+                    System.out.println("Value change");
+                }
+            }
+        });
 
         // Set Controller
         meController.setDisplay(display);
+
         meController.setStartButton(starButton);
         meController.setStopButton(stopButton);
         meController.setIncrButton(incrButton);
-//        meController.addButton(incrButton, "incr");
-//        meController.addButton(decrButton, "decr");
+        meController.setDecrButton(decrButton);
+
         meController.setLedBeet(led1);
         meController.setLedBar(led2);
     }
@@ -90,5 +118,6 @@ public class Ihm implements Initializable {
     }
 
     public void actionButtonDecrement(ActionEvent actionEvent) {
+        decrButton.click();
     }
 }

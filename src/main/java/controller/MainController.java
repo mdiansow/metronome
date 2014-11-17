@@ -3,6 +3,7 @@ package controller;
 import iIhm.IBouton;
 import iIhm.IDisplay;
 import iIhm.ILed;
+import iIhm.ISound;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
 
@@ -10,6 +11,7 @@ import moteur.MetronomeEngineImpl;
  * Created by jerem on 24/10/14.
  */
 public class MainController implements IController {
+    private static final Integer INCREMENT = 10;
 
     private IDisplay display;
     private ILed ledBar;
@@ -19,6 +21,8 @@ public class MainController implements IController {
     private IBouton startButton;
     private IBouton stopButton;
     private IBouton incrButton;
+    private IBouton decrButton;
+    private ISound sound;
 
     public MainController() {
         this.me = new MetronomeEngineImpl(220, 4);
@@ -31,10 +35,16 @@ public class MainController implements IController {
     }
 
     @Override
+    public void setSound(ISound sound) {
+        this.sound = sound;
+    }
+
+    @Override
     public void handleBeatEvent() {
         if (this.ledBeet != null) {
             this.ledBeet.setTempo(this.me.getTempo());
             this.ledBeet.flash();
+            this.sound.run();
         }
     }
 
@@ -43,6 +53,7 @@ public class MainController implements IController {
         if (this.ledBar != null) {
             this.ledBar.setTempo(this.me.getTempo());
             this.ledBar.flash();
+            this.sound.run();
         }
     }
 
@@ -79,14 +90,27 @@ public class MainController implements IController {
         this.setIncrCmd();
     }
 
-    private void setIncrCmd() {
-        this.incrButton.setCmd(() -> {
-            this.me.incrTempo();
+    @Override
+    public void setDecrButton(IBouton decrButton) {
+        this.decrButton = decrButton;
+        this.setDecrCmd();
+    }
+
+    private void setDecrCmd() {
+        this.decrButton.setCmd(() -> {
+            this.me.setBarLength(this.me.getBarLength() - 1);
             this.display.display(this.me.getTempo());
         });
     }
 
-    public void setStopCmd() {
+    private void setIncrCmd() {
+        this.incrButton.setCmd(() -> {
+            this.me.setBarLength(this.me.getBarLength() + 1);
+            this.display.display(this.me.getTempo());
+        });
+    }
+
+    private void setStopCmd() {
         this.stopButton.setCmd(() -> {
             this.stopStartME(false);
         });
@@ -97,13 +121,13 @@ public class MainController implements IController {
         this.ledBar = ledBar;
     }
 
-    public void setStartCmd() {
+    private void setStartCmd() {
         this.startButton.setCmd(() -> {
             this.stopStartME(true);
         });
     }
 
-    public void stopStartME(boolean b) {
+    private void stopStartME(boolean b) {
         this.me.setRunning(b);
     }
 

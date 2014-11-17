@@ -38,7 +38,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public Integer getTempo() {
-        return this.tempo;
+        return this.clock.getBeat();
     }
 
     @Override
@@ -48,12 +48,13 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public Integer getBarLength() {
-        return this.bar;
+        return this.clock.getBar();
     }
 
     @Override
-    public void setBarLengthempo(Integer untemps) {
+    public void setBarLength(Integer untemps) {
         this.bar = untemps;
+        this.clock.setBar(untemps);
     }
 
     @Override
@@ -81,13 +82,6 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     public void setBarCmd(ICommand cmd) {
         barCmd = cmd;
         clock.setBarCmd(cmd);
-    }
-
-    @Override
-    public void incrTempo() {
-        this.tempo += INCREMENT;
-        this.clock.setBeat(this.tempo);
-        System.out.println("INCR\t" + tempo);
     }
 }
 

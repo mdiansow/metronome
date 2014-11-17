@@ -2,16 +2,17 @@ package ihmImpl;
 
 import iIhm.IDisplay;
 import javafx.application.Platform;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+
 
 /**
  * Created by jerem on 14/11/14.
  */
 public class Display implements IDisplay {
     Integer number;
-    TextArea lazone;
+    TextField lazone;
 
-    public Display(TextArea mazone) {
+    public Display(TextField mazone) {
         lazone = mazone;
     }
 
@@ -23,11 +24,11 @@ public class Display implements IDisplay {
         this.number = number;
     }
 
-    public TextArea getLazone() {
+    public TextField getLazone() {
         return lazone;
     }
 
-    public void setLazone(TextArea lazone) {
+    public void setLazone(TextField lazone) {
         this.lazone = lazone;
     }
 

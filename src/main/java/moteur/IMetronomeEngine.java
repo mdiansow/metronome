@@ -15,7 +15,7 @@ public interface IMetronomeEngine {
 
     public Integer getBarLength();
 
-    public void setBarLengthempo(Integer untemps);
+    public void setBarLength(Integer untemps);
 
     public void setRunning(Boolean on);
 
@@ -25,5 +25,4 @@ public interface IMetronomeEngine {
 
     public void setBarCmd(ICommand cmd);
 
-    void incrTempo();
 }
