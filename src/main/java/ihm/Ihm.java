@@ -13,7 +13,8 @@ import java.util.ResourceBundle;
 /**
  * Created by jerem on 20/10/14.
  */
-public class Ihm implements Initializable {
+public class Ihm extends Thread implements Initializable {
+
     @FXML private Button b1;
     @FXML private Button b2;
     @FXML private Button b3;
@@ -62,6 +63,7 @@ public class Ihm implements Initializable {
     }
 
     public void actionButtStop(ActionEvent actionEvent) {
+
     }
 
     public void actionButtInc(ActionEvent actionEvent) {

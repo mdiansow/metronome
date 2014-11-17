@@ -106,10 +106,5 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
             }
         }).start();
     }
-
-    public static void main(String[] args) {
-        IMetronomeEngine m = new MetronomeEngineImpl(5, 300);
-        m.setRunning(true);
-    }
 }
 
