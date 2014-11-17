@@ -3,6 +3,6 @@ package command;
 /**
  * Created by mds on 01/10/14.
  */
-interface ICommand {
+public interface ICommand {
     void execute();
 }

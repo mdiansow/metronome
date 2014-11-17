@@ -7,13 +7,13 @@
     <children>
         <ProgressBar fx:id="pb" layoutX="50.0" layoutY="35.0" progress="0.2" />
         <ProgressIndicator layoutX="60.0" layoutY="69.0" progress="0.0" />
-        <Button fx:id="b1" layoutX="102.0" layoutY="188.0" mnemonicParsing="false" text="Start" onAction="#actionButtStart" />
-        <Button fx:id="b2" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" text="Stop" onAction="#actionButtStop"/>
-        <Button fx:id="b3" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" text="Increment" onAction="#actionButtInc" />
-        <Button fx:id="b4" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" text="Decrement" onAction="#actionButtDecrement" />
-        <TextArea fx:id="ta" layoutX="163.0" layoutY="49.0" prefHeight="75.0" prefWidth="255.0" />
-        <Ellipse fx:id="e1" layoutX="513.0" layoutY="114.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE" />
-        <Ellipse fx:id="e2" fill="#000a14" layoutX="513.0" layoutY="67.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE"  />
+        <Button fx:id="startFXML" layoutX="102.0" layoutY="188.0" mnemonicParsing="false" text="Start" onAction="#actionButtonStart" />
+        <Button fx:id="stopFXML" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" text="Stop" onAction="#actionButtonStop"/>
+        <Button fx:id="incrFXML" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" text="Increment" onAction="#actionButtonInc" />
+        <Button fx:id="decrFXML" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" text="Decrement" onAction="#actionButtonDecrement" />
+        <TextArea fx:id="textAreaAffichage" layoutX="163.0" layoutY="49.0" prefHeight="75.0" prefWidth="255.0" />
+        <Ellipse fx:id="ledBeetFXML" layoutX="513.0" layoutY="114.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE" />
+        <Ellipse fx:id="ledBarFXML" fill="#000a14" layoutX="513.0" layoutY="67.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE"  />
         <!--<TextField fx:id="textField"/>-->
     </children>
 </Pane>

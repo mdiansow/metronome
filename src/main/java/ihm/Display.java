@@ -5,17 +5,34 @@ import javafx.scene.control.TextArea;
 /**
  * Created by jerem on 14/11/14.
  */
-public class Display implements  IDisplay{
-    Integer number ;
+public class Display implements IDisplay {
+    Integer number;
     TextArea lazone;
 
-    public  Display(TextArea mazone){
+    public Display(TextArea mazone) {
         lazone = mazone;
         number = 25;
 
     }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
+
+    public TextArea getLazone() {
+        return lazone;
+    }
+
+    public void setLazone(TextArea lazone) {
+        this.lazone = lazone;
+    }
+
     @Override
-    public void display() {
-        lazone.setText(number.toString());
+    public void display(Integer tempo) {
+        lazone.setText(tempo.toString());
     }
 }

@@ -2,8 +2,6 @@ package moteur;
 
 import command.ICommand;
 
-import java.util.HashMap;
-
 /**
  * Created by root on 20/10/14.
  */
@@ -29,10 +27,8 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
      */
     private boolean isRunning = false;
 
-    /**
-     * The commands about the metronome tempo.
-     */
-    private HashMap<String, ICommand> myCommand = new HashMap<>();
+    private ICommand beatCmd;
+    private ICommand barCmd;
 
     private boolean destroy = true;
 
@@ -42,21 +38,20 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                System.out.println("Before Running!");
                 while (destroy) {
                     if (isRunning) {
                         /*Command beatCmd = myCommand.get("beat");
                         beatCmd.execute()*/
-                        ;
                         try {
                             // System.out.println("tempo");
                             // Call tempo command.
-                            ICommand tempoCmd = myCommand.get("beet");
-                            if (tempoCmd != null)
-                                tempoCmd.execute();
+                            if (beatCmd != null) {
+                                beatCmd.execute();
+                            }
                             count %= bar;
                             if (count++ == 0) {
                                 // Call bar command
-                                ICommand barCmd = myCommand.get("bar");
                                 if (barCmd != null)
                                     barCmd.execute();
                                 // System.out.println("bar");
@@ -93,6 +88,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setRunning(Boolean on) {
+        System.out.println("Running!");
         this.isRunning = on;
     }
 
@@ -103,8 +99,20 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setCmd(ICommand uneCommande, String eventName) {
-        if (uneCommande != null && eventName != null)
-            this.myCommand.put(eventName, uneCommande);
+        if (uneCommande != null && eventName != null) {
+            System.out.println("add cmd " + eventName);
+            //this.myCommand.put(eventName, uneCommande);
+        }
+    }
+
+    @Override
+    public void setBeatCmd(ICommand cmd) {
+        this.beatCmd = cmd;
+    }
+
+    @Override
+    public void setBarCmd(ICommand cmd) {
+        this.barCmd = cmd;
     }
 }
 

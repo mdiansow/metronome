@@ -4,15 +4,15 @@ import moteur.IMetronomeEngine;
 
 public class Click implements ICommand {
 
-	IMetronomeEngine moteur;
+    IMetronomeEngine moteur;
 
-	
-	public Click(IMetronomeEngine pMoteur) {
-		this.moteur = pMoteur;
-	}
-	
-	@Override
-	public void execute() {
-		// this.moteur.click();
-	}
+
+    public Click(IMetronomeEngine pMoteur) {
+        this.moteur = pMoteur;
+    }
+
+    @Override
+    public void execute() {
+        // this.moteur.click();
+    }
 }
