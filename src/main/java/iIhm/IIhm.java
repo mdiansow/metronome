@@ -1,4 +1,4 @@
-package ihm;
+package iIhm;
 
 /**
  * Created by mds on 17/11/14.

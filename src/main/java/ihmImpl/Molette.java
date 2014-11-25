@@ -1,5 +1,6 @@
-package ihm;
+package ihmImpl;
 
+import iIhm.IMolette;
 import javafx.scene.control.ProgressBar;
 
 /**

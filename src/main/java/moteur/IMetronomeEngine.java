@@ -8,19 +8,21 @@ import command.ICommand;
 public interface IMetronomeEngine {
 
     public static final String BEAT_EVENT = "beat";
-	
-	public Integer getTempo();
 
-	public void setTempo(Integer untemps);
+    public Integer getTempo();
 
-	public Integer getBarLength();
+    public void setTempo(Integer untemps);
 
-	public void setBarLengthempo(Integer untemps);
-	public void setRunning(Boolean on);
-	public Boolean isRunning();
-	public void setCmd (ICommand uneCommande, String eventName);
+    public Integer getBarLength();
+
+    public void setBarLengthempo(Integer untemps);
+
+    public void setRunning(Boolean on);
+
+    public Boolean isRunning();
 
     public void setBeatCmd(ICommand cmd);
+
     public void setBarCmd(ICommand cmd);
 
 }

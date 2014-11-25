@@ -1,6 +1,8 @@
-package ihm;
+package ihmImpl;
 
 import controller.MainController;
+import iIhm.IBouton;
+import iIhm.ILed;
 import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;

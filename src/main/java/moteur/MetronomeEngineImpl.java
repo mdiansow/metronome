@@ -30,40 +30,14 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     private ICommand beatCmd;
     private ICommand barCmd;
 
-    private boolean destroy = true;
+    private IClock clock;
+
+    private boolean destroy = false;
 
     public MetronomeEngineImpl(int bar, int tempo) {
         this.tempo = tempo;
         this.bar = bar;
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Before Running!");
-                while (destroy) {
-                    if (isRunning) {
-                        /*Command beatCmd = myCommand.get("beat");
-                        beatCmd.execute()*/
-                        try {
-                            // System.out.println("tempo");
-                            // Call tempo command.
-                            if (beatCmd != null) {
-                                beatCmd.execute();
-                            }
-                            count %= bar;
-                            if (count++ == 0) {
-                                // Call bar command
-                                if (barCmd != null)
-                                    barCmd.execute();
-                                // System.out.println("bar");
-                            }
-                            Thread.sleep(60 / tempo);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-            }
-        }).start();
+        this.clock = new Clock(tempo, bar);
     }
 
     @Override
@@ -88,8 +62,12 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setRunning(Boolean on) {
-        System.out.println("Running!");
         this.isRunning = on;
+        if (this.isRunning) {
+            clock.start();
+        } else {
+            clock.stop();
+        }
     }
 
     @Override
@@ -98,21 +76,28 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     }
 
     @Override
-    public void setCmd(ICommand uneCommande, String eventName) {
-        if (uneCommande != null && eventName != null) {
-            System.out.println("add cmd " + eventName);
-            //this.myCommand.put(eventName, uneCommande);
-        }
-    }
-
-    @Override
     public void setBeatCmd(ICommand cmd) {
         this.beatCmd = cmd;
+        clock.setBeatCmd(this.beatCmd);
     }
 
     @Override
     public void setBarCmd(ICommand cmd) {
         this.barCmd = cmd;
+        clock.setBarCmd(this.barCmd);
     }
+
+//    public static void main(String[] args) {
+//        IController c = new MainController();
+//        IMetronomeEngine m = new MetronomeEngineImpl(3, 250);
+//        m.setBeatCmd(() -> {
+//            System.out.println("Beet");
+//        });
+//        m.setBarCmd(() -> {
+//            System.err.println("Bar");
+//        });
+//        m.setRunning(true);
+//
+//    }
 }
 

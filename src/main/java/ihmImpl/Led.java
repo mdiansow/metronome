@@ -1,11 +1,12 @@
-package ihm;
+package ihmImpl;
 
+import iIhm.ILed;
 import javafx.scene.shape.Ellipse;
 
 /**
  * Created by jerem on 14/11/14.
  */
-public class Led implements  ILed {
+public class Led implements ILed {
 
     Boolean etat;
     Ellipse monEllipse;

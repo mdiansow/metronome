@@ -1,6 +1,7 @@
-package ihm;
+package ihmImpl;
 
 import command.ICommand;
+import iIhm.IBouton;
 import javafx.scene.control.Button;
 
 

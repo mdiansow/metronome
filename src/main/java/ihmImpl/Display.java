@@ -1,5 +1,6 @@
-package ihm;
+package ihmImpl;
 
+import iIhm.IDisplay;
 import javafx.scene.control.TextArea;
 
 /**

@@ -1,4 +1,4 @@
-package ihm;
+package iIhm;
 
 import command.ICommand;
 
