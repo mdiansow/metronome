@@ -3,7 +3,7 @@
 <?import javafx.scene.effect.SepiaTone?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihm.Ihm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="577.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8">
+<Pane xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihmImpl.Ihm" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="577.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8">
     <children>
         <ProgressBar fx:id="pb" layoutX="50.0" layoutY="35.0" progress="0.2" />
         <ProgressIndicator layoutX="60.0" layoutY="69.0" progress="0.0" />

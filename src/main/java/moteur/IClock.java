@@ -8,7 +8,12 @@ import command.ICommand;
 public interface IClock {
 
     void start();
+
     void stop();
+
     void setBeatCmd(ICommand c);
+
     void setBarCmd(ICommand c);
+
+    void setBeat(int beat);
 }

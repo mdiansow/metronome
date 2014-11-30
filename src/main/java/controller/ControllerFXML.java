@@ -14,10 +14,7 @@ import java.io.IOException;
 public class ControllerFXML extends Application {
 
     public static void main(String[] args) {
-
-//        MainController controller = new MainController();
-//        controller.getMe().setRunning(true);
-//
+        //controller.getMe().setRunning(false);
         launch(args);
     }
 

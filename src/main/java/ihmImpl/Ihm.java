@@ -3,10 +3,10 @@ package ihmImpl;
 import controller.MainController;
 import iIhm.IBouton;
 import iIhm.ILed;
-import javafx.scene.control.Button;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.shape.Ellipse;
@@ -68,27 +68,25 @@ public class Ihm implements Initializable {
 
         // Set Controller
         meController.setDisplay(display);
-        meController.setButton(starButton, "start");
-        meController.setButton(stopButton, "stop");
-        meController.setButton(incrButton, "incr");
-        meController.setButton(decrButton, "decr");
+        meController.setStartButton(starButton);
+        meController.setStopButton(stopButton);
+        meController.setIncrButton(incrButton);
+//        meController.addButton(incrButton, "incr");
+//        meController.addButton(decrButton, "decr");
         meController.setLedBeet(led1);
         meController.setLedBar(led2);
     }
 
     public void actionButtonStart(ActionEvent actionEvent) {
-        System.out.println("You clicked me!");
         starButton.click();
-        starButton.enabled();
-        led1.flash();
-        led2.flash();
-        display.display(250);
     }
 
     public void actionButtonStop(ActionEvent actionEvent) {
+        stopButton.click();
     }
 
     public void actionButtonInc(ActionEvent actionEvent) {
+        incrButton.click();
     }
 
     public void actionButtonDecrement(ActionEvent actionEvent) {

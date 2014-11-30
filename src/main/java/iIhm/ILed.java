@@ -5,4 +5,6 @@ package iIhm;
  */
 public interface ILed {
     void flash();
+
+    void setTempo(int s);
 }

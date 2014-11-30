@@ -13,6 +13,7 @@ public class Clock implements IClock {
     private ICommand beatCmd;
     private ICommand barCmd;
     private int count = 0;
+    private boolean isRunning = false;
 
     public Clock(int beat, int bar) {
         this.beat = beat;
@@ -22,6 +23,7 @@ public class Clock implements IClock {
     @Override
     public void start() {
         if (t == null) {
+            isRunning = true;
             t = createThread();
             t.start();
         }
@@ -30,6 +32,7 @@ public class Clock implements IClock {
     @Override
     public void stop() {
         if (t != null) {
+            isRunning = false;
             t.stop();
         }
     }
@@ -44,34 +47,76 @@ public class Clock implements IClock {
         barCmd = c;
     }
 
+
+    public int getBeat() {
+        return beat;
+    }
+
+    @Override
+    public void setBeat(int beat) {
+        this.beat = beat;
+    }
+
+    public int getBar() {
+        return bar;
+    }
+
+    public void setBar(int bar) {
+        this.bar = bar;
+    }
+
+    public ICommand getBeatCmd() {
+        return beatCmd;
+    }
+
+    public ICommand getBarCmd() {
+        return barCmd;
+    }
+
+    public int getCount() {
+        return count;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public boolean isRunning() {
+        return isRunning;
+    }
+
+    public void setRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
     private Thread createThread() {
         return new Thread() {
             @Override
             public void run() {
                 while (true) {
-                    //System.out.println("now runnin");
-                    // System.err.println("modif running!");
-                    /*Command beatCmd = myCommand.get("beat");
-                    beatCmd.execute()*/
-                    try {
-                        // System.out.println("tempo");
-                        // Call tempo command.
-                        if (beatCmd != null) {
-                            beatCmd.execute();
-                        }
-                        count %= bar;
-                        if (count++ == 0) {
-                            // Call bar command
-                            if (barCmd != null) {
-                                barCmd.execute();
+                    if (isRunning) {
+                        try {
+                            // System.out.println("tempo");
+                            // Call tempo command.
+                            if (beatCmd != null) {
+                                beatCmd.execute();
                             }
-                            // System.out.println("bar");
+                            count %= bar;
+                            if (count++ == 0) {
+                                // Call bar command
+                                if (barCmd != null) {
+                                    barCmd.execute();
+                                }
+                            }
+                            Thread.sleep(beat * 5);
+                            System.out.println("BEAT " + beat);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                        Thread.sleep(60 / beat);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+
                     }
                 }
+
             }
         };
     }

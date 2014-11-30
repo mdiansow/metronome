@@ -1,13 +1,10 @@
 package controller;
 
-import ihm.IBouton;
-import ihm.IDisplay;
-import ihm.ILed;
+import iIhm.IBouton;
+import iIhm.IDisplay;
+import iIhm.ILed;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by jerem on 24/10/14.
@@ -15,46 +12,39 @@ import java.util.Map;
 public class MainController implements IController {
 
     private IDisplay display;
-    private Map<Object, Object> buttonMap;
     private ILed ledBar;
     private ILed ledBeet;
     private IMetronomeEngine me;
 
+    private IBouton startButton;
+    private IBouton stopButton;
+    private IBouton incrButton;
+
     public MainController() {
-        me = new MetronomeEngineImpl(3, 150);
-        buttonMap = new HashMap<>();
-        this.getMe().setBarCmd(() -> this.handleBarEvent());
-        this.getMe().setBeatCmd(() -> this.handleBeatEvent());
-    }
-
-    public IMetronomeEngine getMe() {
-        return me;
-    }
-
-    public void setMe(IMetronomeEngine me) {
-        this.me = me;
+        this.me = new MetronomeEngineImpl(220, 4);
+        this.me.setBeatCmd(() -> {
+            handleBeatEvent();
+        });
+        this.me.setBarCmd(() -> {
+            this.handleBarEvent();
+        });
     }
 
     @Override
     public void handleBeatEvent() {
-        System.out.println("###### BEAT #####");
-        //this.display.display(me.getTempo());
+        if (this.ledBeet != null) {
+            this.ledBeet.setTempo(this.me.getTempo());
+            this.ledBeet.flash();
+        }
     }
 
     @Override
     public void handleBarEvent() {
-        System.out.println("======= BAR =======");
+        if (this.ledBar != null) {
+            this.ledBar.setTempo(this.me.getTempo());
+            this.ledBar.flash();
+        }
     }
-//
-//    public static void main(String[] args) {
-//
-//        MainController controller = new MainController();
-//        controller.me.setRunning(true);
-//
-//        controller.getMe().setBarCmd(() -> controller.handleBarEvent());
-//        controller.getMe().setBeatCmd(() -> controller.handleBeatEvent());
-//    }
-//
 
     public IDisplay getDisplay() {
         return display;
@@ -63,24 +53,7 @@ public class MainController implements IController {
     @Override
     public void setDisplay(IDisplay display) {
         this.display = display;
-    }
-
-    @Override
-    public void setButton(IBouton starButton, String start) {
-        buttonMap.put(start, starButton);
-
-        if (start.equals("start")) {
-            starButton.setCmd(() -> this.start());
-        }
-    }
-
-    public void start() {
-        me.setRunning(!me.isRunning());
-        System.out.println("I'm here!");
-    }
-
-    public ILed getLedBeet() {
-        return ledBeet;
+        this.display.display(this.me.getTempo());
     }
 
     @Override
@@ -88,8 +61,35 @@ public class MainController implements IController {
         this.ledBeet = ledBeet;
     }
 
-    public ILed getLedBar() {
-        return ledBar;
+    @Override
+    public void setStopButton(IBouton stopButton) {
+        this.stopButton = stopButton;
+        this.setStopCmd();
+    }
+
+    @Override
+    public void setStartButton(IBouton startButton) {
+        this.startButton = startButton;
+        this.setStartCmd();
+    }
+
+    @Override
+    public void setIncrButton(IBouton incrButton) {
+        this.incrButton = incrButton;
+        this.setIncrCmd();
+    }
+
+    private void setIncrCmd() {
+        this.incrButton.setCmd(() -> {
+            this.me.incrTempo();
+            this.display.display(this.me.getTempo());
+        });
+    }
+
+    public void setStopCmd() {
+        this.stopButton.setCmd(() -> {
+            this.stopStartME(false);
+        });
     }
 
     @Override
@@ -97,4 +97,31 @@ public class MainController implements IController {
         this.ledBar = ledBar;
     }
 
+    public void setStartCmd() {
+        this.startButton.setCmd(() -> {
+            this.stopStartME(true);
+        });
+    }
+
+    public void stopStartME(boolean b) {
+        this.me.setRunning(b);
+    }
+
+
+//    public static void main(String[] args) {
+//        MainController c = new MainController();
+//        // ICommand beatCmd = new BeetEvnt(c);
+//        c.getMe().setRunning(true);
+//        c.getMe().setBeatCmd(() -> c.handleBeatEvent());
+//        c.getMe().setBarCmd(() -> c.handleBarEvent());
+//        Scanner scanner = new Scanner(System.in);
+//
+//        System.out.println("la valeur");
+//        boolean b = scanner.nextBoolean();
+//        while (b) {
+//            System.out.println("la valeur");
+//            b = scanner.nextBoolean();
+//            c.getMe().setRunning(b);
+//        }
+//    }
 }

@@ -25,4 +25,5 @@ public interface IMetronomeEngine {
 
     public void setBarCmd(ICommand cmd);
 
+    void incrTempo();
 }

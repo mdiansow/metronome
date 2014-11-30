@@ -1,6 +1,7 @@
 package ihmImpl;
 
 import iIhm.IDisplay;
+import javafx.application.Platform;
 import javafx.scene.control.TextArea;
 
 /**
@@ -12,8 +13,6 @@ public class Display implements IDisplay {
 
     public Display(TextArea mazone) {
         lazone = mazone;
-        number = 25;
-
     }
 
     public Integer getNumber() {
@@ -34,6 +33,8 @@ public class Display implements IDisplay {
 
     @Override
     public void display(Integer tempo) {
+        Platform.runLater(() -> {
+        });
         lazone.setText(tempo.toString());
     }
 }

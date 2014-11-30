@@ -7,6 +7,7 @@ import command.ICommand;
  */
 public class MetronomeEngineImpl implements IMetronomeEngine {
 
+    private static final Integer INCREMENT = 10;
     /**
      * Metronome tempo
      */
@@ -16,11 +17,6 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
      * Metronome bar
      */
     private Integer bar;
-
-    /**
-     * Count number of tempo
-     */
-    private Integer count = 0;
 
     /**
      * This boolean indicate when the metronome is run.
@@ -34,10 +30,10 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     private boolean destroy = false;
 
-    public MetronomeEngineImpl(int bar, int tempo) {
-        this.tempo = tempo;
+    public MetronomeEngineImpl(int beat, int bar) {
+        this.tempo = beat;
         this.bar = bar;
-        this.clock = new Clock(tempo, bar);
+        this.clock = new Clock(beat, bar);
     }
 
     @Override
@@ -63,7 +59,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     @Override
     public void setRunning(Boolean on) {
         this.isRunning = on;
-        if (this.isRunning) {
+        if (on) {
             clock.start();
         } else {
             clock.stop();
@@ -77,27 +73,21 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setBeatCmd(ICommand cmd) {
-        this.beatCmd = cmd;
-        clock.setBeatCmd(this.beatCmd);
+        beatCmd = cmd;
+        clock.setBeatCmd(cmd);
     }
 
     @Override
     public void setBarCmd(ICommand cmd) {
-        this.barCmd = cmd;
-        clock.setBarCmd(this.barCmd);
+        barCmd = cmd;
+        clock.setBarCmd(cmd);
     }
 
-//    public static void main(String[] args) {
-//        IController c = new MainController();
-//        IMetronomeEngine m = new MetronomeEngineImpl(3, 250);
-//        m.setBeatCmd(() -> {
-//            System.out.println("Beet");
-//        });
-//        m.setBarCmd(() -> {
-//            System.err.println("Bar");
-//        });
-//        m.setRunning(true);
-//
-//    }
+    @Override
+    public void incrTempo() {
+        this.tempo += INCREMENT;
+        this.clock.setBeat(this.tempo);
+        System.out.println("INCR\t" + tempo);
+    }
 }
 
