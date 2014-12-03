@@ -4,6 +4,7 @@ import iIhm.IBouton;
 import iIhm.IDisplay;
 import iIhm.ILed;
 import iIhm.ISound;
+import ihmImpl.Molette;
 
 /**
  * Created by mds on 01/10/14.
@@ -29,4 +30,6 @@ public interface IController {
     void setDecrButton(IBouton decrButton);
 
     void setSound(ISound sound);
+
+    void setMolette(Molette mol);
 }

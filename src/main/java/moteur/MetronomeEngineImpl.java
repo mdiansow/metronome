@@ -31,8 +31,6 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
     private boolean destroy = false;
 
     public MetronomeEngineImpl(int beat, int bar) {
-        this.tempo = beat;
-        this.bar = bar;
         this.clock = new Clock(beat, bar);
     }
 
@@ -43,7 +41,7 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setTempo(Integer untemps) {
-        this.tempo = untemps;
+        this.clock.setBeat(untemps);
     }
 
     @Override
@@ -53,13 +51,11 @@ public class MetronomeEngineImpl implements IMetronomeEngine {
 
     @Override
     public void setBarLength(Integer untemps) {
-        this.bar = untemps;
         this.clock.setBar(untemps);
     }
 
     @Override
     public void setRunning(Boolean on) {
-        this.isRunning = on;
         if (on) {
             clock.start();
         } else {

@@ -19,6 +19,7 @@ import java.util.ResourceBundle;
  * Created by jerem on 20/10/14.
  */
 public class Ihm implements Initializable {
+    private static final int INDEX_NUMBER_OF_CHANGE = 10;
     @FXML
     private Button startFXML;
     @FXML
@@ -60,6 +61,8 @@ public class Ihm implements Initializable {
     private MainController meController;
     private ISound sound;
 
+    private int startIndex;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         meController = new MainController();
@@ -73,7 +76,7 @@ public class Ihm implements Initializable {
 
         tempoField.setEditable(false);
         display = new Display(tempoField);
-        mol = new Molette(pb);
+        mol = new Molette(sliderFXML);
 
         // Sound
         sound = new Sound();
@@ -83,12 +86,14 @@ public class Ihm implements Initializable {
         // Slider
         sliderFXML.setShowTickLabels(true);
         sliderFXML.setShowTickMarks(true);
+        meController.setMolette(mol);
         sliderFXML.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                int value = oldValue.intValue() - newValue.intValue();
-                if ((Math.abs(value) / 5) > 0) {
-                    System.out.println("Value change");
+                startIndex++;
+                if ((startIndex % INDEX_NUMBER_OF_CHANGE) == 0) {
+                    System.out.println("la valeur " + newValue.intValue());
+                    mol.setSliderValue(newValue.intValue());
                 }
             }
         });

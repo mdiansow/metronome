@@ -56,6 +56,7 @@ public class Clock implements IClock {
     public void setBeat(int beat) {
         if (beat > 0) {
             this.beat = beat;
+            System.out.println("Le Tempo\t" + this.beat);
         }
     }
 
@@ -115,7 +116,6 @@ public class Clock implements IClock {
                                 }
                             }
                             Thread.sleep(beat * 5);
-                            System.out.println("BEAT " + beat);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }

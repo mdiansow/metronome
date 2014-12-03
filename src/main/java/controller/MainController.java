@@ -1,9 +1,7 @@
 package controller;
 
-import iIhm.IBouton;
-import iIhm.IDisplay;
-import iIhm.ILed;
-import iIhm.ISound;
+import iIhm.*;
+import ihmImpl.Molette;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
 
@@ -23,6 +21,7 @@ public class MainController implements IController {
     private IBouton incrButton;
     private IBouton decrButton;
     private ISound sound;
+    private IMolette molette;
 
     public MainController() {
         this.me = new MetronomeEngineImpl(220, 4);
@@ -37,6 +36,15 @@ public class MainController implements IController {
     @Override
     public void setSound(ISound sound) {
         this.sound = sound;
+    }
+
+    @Override
+    public void setMolette(Molette mol) {
+        this.molette = mol;
+        this.molette.setChangeValue(() -> {
+            this.me.setTempo(this.molette.getValue());
+            this.display.display(this.me.getTempo());
+        });
     }
 
     @Override
@@ -55,10 +63,6 @@ public class MainController implements IController {
             this.ledBar.flash();
             this.sound.run();
         }
-    }
-
-    public IDisplay getDisplay() {
-        return display;
     }
 
     @Override
