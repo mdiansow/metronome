@@ -54,15 +54,14 @@ public class Clock implements IClock {
 
     @Override
     public void setBeat(int beat) {
-        if (beat > 0) {
+        if (isRunning && beat > 0) {
             this.beat = beat;
-            System.out.println("Le Tempo\t" + this.beat);
         }
     }
 
     @Override
     public void setBar(Integer bar) {
-        if (bar > 0) {
+        if (isRunning && bar > 0) {
             this.bar = bar;
         }
     }

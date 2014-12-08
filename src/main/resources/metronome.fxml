@@ -15,9 +15,9 @@
         <ProgressBar fx:id="pb" layoutX="50.0" layoutY="35.0" progress="0.2" />
         <ProgressIndicator layoutX="60.0" layoutY="69.0" progress="0.0" />
         <Button fx:id="startFXML" layoutX="102.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonStart" text="Start" />
-        <Button fx:id="stopFXML" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonStop" text="Stop" />
-        <Button fx:id="incrFXML" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonInc" text="Increment" />
-        <Button fx:id="decrFXML" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonDecrement" text="Decrement" />
+        <Button fx:id="stopFXML" disable="true" layoutX="189.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonStop" text="Stop" />
+        <Button fx:id="incrFXML" disable="true" layoutX="279.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonInc" text="Increment" />
+        <Button fx:id="decrFXML" disable="true" layoutX="381.0" layoutY="188.0" mnemonicParsing="false" onAction="#actionButtonDecrement" text="Decrement" />
         <Ellipse fx:id="ledBeetFXML" layoutX="513.0" layoutY="115.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
             <effect>
                 <Lighting>
@@ -42,7 +42,7 @@
                 </Lighting>
             </effect>
         </Ellipse>
-        <Slider fx:id="sliderFXML" layoutX="20.0" layoutY="12.0" max="360.0" min="120.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="220.0" />
+        <Slider fx:id="sliderFXML" disable="true" layoutX="20.0" layoutY="12.0" max="360.0" min="120.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="220.0" />
         <TextField fx:id="tempoField" layoutX="165.0" layoutY="31.0" prefHeight="85.0" prefWidth="286.0" promptText="BEAT">
             <font>
                 <Font name="System Bold" size="45.0" />

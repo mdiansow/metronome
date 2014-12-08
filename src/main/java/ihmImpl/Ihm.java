@@ -111,6 +111,11 @@ public class Ihm implements Initializable {
     }
 
     public void actionButtonStart(ActionEvent actionEvent) {
+        sliderFXML.setDisable(false);
+        incrFXML.setDisable(false);
+        decrFXML.setDisable(false);
+        startFXML.setDisable(true);
+        stopFXML.setDisable(false);
         starButton.click();
     }
 
