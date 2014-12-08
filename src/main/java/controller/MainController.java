@@ -24,7 +24,7 @@ public class MainController implements IController {
     private IMolette molette;
 
     public MainController() {
-        this.me = new MetronomeEngineImpl(220, 4);
+        this.me = new MetronomeEngineImpl(30, 4);
         this.me.setBeatCmd(() -> {
             handleBeatEvent();
         });
@@ -85,7 +85,9 @@ public class MainController implements IController {
     @Override
     public void setStartButton(IBouton startButton) {
         this.startButton = startButton;
-        this.setStartCmd();
+
+            this.setStartCmd();
+
     }
 
     @Override

@@ -94,38 +94,39 @@ public class Clock implements IClock {
     }
 
     private Thread createThread() {
-        synchronized (this) {
 
-            return new Thread() {
+        return new Thread() {
 
-                @Override
-                public void run() {
+            @Override
+            public void run() {
 
-                    while (true) {
-                        if (isRunning) {
-                            try {
-                                // System.out.println("tempo");
-                                // Call tempo command.
-                                if (beatCmd != null) {
-                                    beatCmd.execute();
-                                }
-                                count %= bar;
-                                if (count++ == 0) {
-                                    // Call bar command
-                                    if (barCmd != null) {
-                                        barCmd.execute();
-                                    }
-                                }
-                                Thread.sleep(beat * 5);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
+                while (true) {
+                    if (isRunning) {
+                        try {
+                            // System.out.println("tempo");
+                            // Call tempo command.
+                            if (beatCmd != null) {
+                                beatCmd.execute();
                             }
-
+                            count %= bar;
+                            if (count++ == 0) {
+                                // Call bar command
+                                if (barCmd != null) {
+                                    barCmd.execute();
+                                }
+                            }
+                            int time= 60000/beat;
+                            System.out.println(time+" en ms");
+                            Thread.sleep(time);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
                         }
-                    }
 
+                    }
                 }
-            };
-        }
+
+            }
+        };
     }
+
 }

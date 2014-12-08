@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 /**
@@ -31,7 +32,10 @@ public class ControllerFXML extends Application {
             primaryStage.setOnCloseRequest(t -> {
                 Platform.exit();
                 System.exit(0);
+                primaryStage.close();
             });
+
+
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

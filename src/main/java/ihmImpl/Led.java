@@ -26,12 +26,13 @@ public class Led implements ILed {
 
     @Override
     public void flash() {
-        Platform.runLater(() -> {
-        });
-        Transition transition = new FillTransition(Duration.millis(this.tempo), monEllipse, Color.BLACK, Color.RED);
-        transition.setAutoReverse(true);
-        transition.play();
-    }
+            Platform.runLater(() -> {
+            });
+            Transition transition = new FillTransition(Duration.millis(400), monEllipse, Color.RED, Color.BLACK);
+            transition.setAutoReverse(true);
+            transition.play();
+        }
+
 
 
     @Override

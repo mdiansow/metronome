@@ -35,7 +35,7 @@
                 </Lighting>
             </effect>
         </Ellipse>
-        <Slider fx:id="sliderFXML" blockIncrement="5.0" disable="true" layoutX="35.0" layoutY="24.0" max="360.0" min="120.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="220.0" />
+        <Slider fx:id="sliderFXML" blockIncrement="5.0" disable="true" layoutX="35.0" layoutY="24.0" max="120.0" min="1.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="30" />
         <TextField fx:id="tempoField" alignment="BASELINE_CENTER" layoutX="112.0" layoutY="33.0" prefHeight="85.0" prefWidth="286.0" promptText="BEAT">
             <font>
                 <Font name="System Bold" size="45.0" />
