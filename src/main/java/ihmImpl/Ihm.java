@@ -10,8 +10,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.scene.paint.*;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 
+import java.awt.*;
+import java.awt.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -29,7 +35,7 @@ public class Ihm implements Initializable {
     @FXML
     private Button decrFXML;
 
-    private IBouton starButton;
+    private IBouton startButton;
     private IBouton stopButton;
     private IBouton incrButton;
     private IBouton decrButton;
@@ -43,18 +49,12 @@ public class Ihm implements Initializable {
     private ILed led2;
 
     @FXML
-    private TextArea textAreaAffichage;
-
-    @FXML
     private TextField tempoField;
 
     private Display display;
 
     @FXML
     private Slider sliderFXML;
-
-    @FXML
-    private ProgressBar pb;
 
     private Molette mol;
 
@@ -66,7 +66,7 @@ public class Ihm implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         meController = new MainController();
-        starButton = new Bouton(startFXML);
+        startButton = new Bouton(startFXML);
         stopButton = new Bouton(stopFXML);
         incrButton = new Bouton(incrFXML);
         decrButton = new Bouton(decrFXML);
@@ -90,18 +90,16 @@ public class Ihm implements Initializable {
         sliderFXML.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                startIndex++;
-                if ((startIndex % INDEX_NUMBER_OF_CHANGE) == 0) {
-                    System.out.println("la valeur " + newValue.intValue());
-                    mol.setSliderValue(newValue.intValue());
-                }
+
+                mol.setSliderValue(newValue.intValue());
+
             }
         });
 
         // Set Controller
         meController.setDisplay(display);
 
-        meController.setStartButton(starButton);
+        meController.setStartButton(startButton);
         meController.setStopButton(stopButton);
         meController.setIncrButton(incrButton);
         meController.setDecrButton(decrButton);
@@ -116,11 +114,23 @@ public class Ihm implements Initializable {
         decrFXML.setDisable(false);
         startFXML.setDisable(true);
         stopFXML.setDisable(false);
-        starButton.click();
+        startButton.click();
     }
 
     public void actionButtonStop(ActionEvent actionEvent) {
+
         stopButton.click();
+
+        stopFXML.setDisable(true);
+        startFXML.setDisable(false);
+        sliderFXML.setDisable(true);
+        incrFXML.setDisable(true);
+        decrFXML.setDisable(true);
+
+        ledBarFXML.setFill(javafx.scene.paint.Color.BLACK);
+        ledBeetFXML.setFill(javafx.scene.paint.Color.BLACK);
+        startFXML.requestFocus();
+
     }
 
     public void actionButtonInc(ActionEvent actionEvent) {

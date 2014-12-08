@@ -128,6 +128,8 @@ public class MainController implements IController {
     private void setStartCmd() {
         this.startButton.setCmd(() -> {
             this.stopStartME(true);
+            
+
         });
     }
 

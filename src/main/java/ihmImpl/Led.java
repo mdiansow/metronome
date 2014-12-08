@@ -33,6 +33,7 @@ public class Led implements ILed {
         transition.play();
     }
 
+
     @Override
     public void setTempo(int s) {
         this.tempo = s;

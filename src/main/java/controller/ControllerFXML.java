@@ -1,6 +1,7 @@
 package controller;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -16,6 +17,7 @@ public class ControllerFXML extends Application {
     public static void main(String[] args) {
         //controller.getMe().setRunning(false);
         launch(args);
+
     }
 
     @Override
@@ -25,6 +27,11 @@ public class ControllerFXML extends Application {
             primaryStage.setTitle("Notre Super Métronome");
             primaryStage.setScene(new Scene(root, 550, 250));
             primaryStage.show();
+
+            primaryStage.setOnCloseRequest(t -> {
+                Platform.exit();
+                System.exit(0);
+            });
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }

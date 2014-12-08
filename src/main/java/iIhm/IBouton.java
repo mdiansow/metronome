@@ -7,8 +7,6 @@ import command.ICommand;
  */
 public interface IBouton {
 
-    void enabled();
-
     void click();
 
     void setCmd(ICommand cmd);

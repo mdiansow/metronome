@@ -18,23 +18,21 @@ public class Clock implements IClock {
     public Clock(int beat, int bar) {
         this.beat = beat;
         this.bar = bar;
+
     }
 
     @Override
     public void start() {
-        if (t == null) {
-            isRunning = true;
-            t = createThread();
-            t.start();
-        }
+        t = createThread();
+        t.start();
+        isRunning = true;
+
     }
 
     @Override
     public void stop() {
-        if (t != null) {
-            isRunning = false;
-            t.stop();
-        }
+        isRunning = false;
+
     }
 
     @Override
@@ -96,33 +94,38 @@ public class Clock implements IClock {
     }
 
     private Thread createThread() {
-        return new Thread() {
-            @Override
-            public void run() {
-                while (true) {
-                    if (isRunning) {
-                        try {
-                            // System.out.println("tempo");
-                            // Call tempo command.
-                            if (beatCmd != null) {
-                                beatCmd.execute();
-                            }
-                            count %= bar;
-                            if (count++ == 0) {
-                                // Call bar command
-                                if (barCmd != null) {
-                                    barCmd.execute();
+        synchronized (this) {
+
+            return new Thread() {
+
+                @Override
+                public void run() {
+
+                    while (true) {
+                        if (isRunning) {
+                            try {
+                                // System.out.println("tempo");
+                                // Call tempo command.
+                                if (beatCmd != null) {
+                                    beatCmd.execute();
                                 }
+                                count %= bar;
+                                if (count++ == 0) {
+                                    // Call bar command
+                                    if (barCmd != null) {
+                                        barCmd.execute();
+                                    }
+                                }
+                                Thread.sleep(beat * 5);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
                             }
-                            Thread.sleep(beat * 5);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
+
                         }
-
                     }
-                }
 
-            }
-        };
+                }
+            };
+        }
     }
 }
