@@ -3,11 +3,11 @@ package moteur;
 import command.ICommand;
 
 /**
+ * Metronome engine interface.
+ * <p>
  * Created by mds on 01/10/14.
  */
 public interface IMetronomeEngine {
-
-    public static final String BEAT_EVENT = "beat";
 
     public Integer getTempo();
 
@@ -17,9 +17,9 @@ public interface IMetronomeEngine {
 
     public void setBarLength(Integer untemps);
 
-    public void setRunning(Boolean on);
+    public boolean isRunning();
 
-    public Boolean isRunning();
+    public void setRunning(boolean on);
 
     public void setBeatCmd(ICommand cmd);
 

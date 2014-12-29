@@ -3,11 +3,12 @@ package moteur;
 import command.ICommand;
 
 /**
+ * The metronome engine clock class implements
+ * <p>
  * Created by mds on 18/11/14.
  */
 public class Clock implements IClock {
 
-    private Thread t;
     private int beat;
     private int bar;
     private ICommand beatCmd;
@@ -15,41 +16,75 @@ public class Clock implements IClock {
     private int count = 0;
     private boolean isRunning = false;
 
+    /**
+     * The metronome engine timer constructor.
+     *
+     * @param beat int
+     * @param bar int
+     */
     public Clock(int beat, int bar) {
         this.beat = beat;
         this.bar = bar;
 
     }
 
+    /**
+     * Start method.
+     * This method start the metronome engine timer.
+     */
     @Override
     public void start() {
-        t = createThread();
+        Thread t = createThread();
         t.start();
         isRunning = true;
 
     }
 
+    /**
+     * Stop method.
+     * This method stop the metronome engine timer.
+     */
     @Override
     public void stop() {
         isRunning = false;
 
     }
 
+    /**
+     * Beat command setter
+     *
+     * @param c ICommand parameter
+     */
     @Override
     public void setBeatCmd(ICommand c) {
         beatCmd = c;
     }
 
+    /**
+     * Bar command setter
+     *
+     * @param c ICommand parameter
+     */
     @Override
     public void setBarCmd(ICommand c) {
         barCmd = c;
     }
 
+    /**
+     * Beat value getter.
+     *
+     * @return int
+     */
     @Override
     public int getBeat() {
         return beat;
     }
 
+    /**
+     * Beat value setter
+     *
+     * @param beat int
+     */
     @Override
     public void setBeat(int beat) {
         if (isRunning && beat > 0) {
@@ -57,6 +92,21 @@ public class Clock implements IClock {
         }
     }
 
+    /**
+     * Bar value getter
+     *
+     * @return int
+     */
+    @Override
+    public int getBar() {
+        return bar;
+    }
+
+    /**
+     * Bar value setter
+     *
+     * @param bar int
+     */
     @Override
     public void setBar(Integer bar) {
         if (isRunning && bar > 0) {
@@ -64,11 +114,26 @@ public class Clock implements IClock {
         }
     }
 
+    /**
+     * Timer status getter
+     *
+     * @return boolean
+     */
     @Override
-    public int getBar() {
-        return bar;
+    public boolean isRunning() {
+        return isRunning;
     }
 
+    /**
+     * Timer status setter
+     *
+     * @param isRunning boolean
+     */
+    public void setRunning(boolean isRunning) {
+        this.isRunning = isRunning;
+    }
+
+/*
     public ICommand getBeatCmd() {
         return beatCmd;
     }
@@ -84,15 +149,13 @@ public class Clock implements IClock {
     public void setCount(int count) {
         this.count = count;
     }
+*/
 
-    public boolean isRunning() {
-        return isRunning;
-    }
-
-    public void setRunning(boolean isRunning) {
-        this.isRunning = isRunning;
-    }
-
+    /**
+     * Create the thread like timer.
+     *
+     * @return Thread
+     */
     private Thread createThread() {
 
         return new Thread() {
@@ -115,8 +178,8 @@ public class Clock implements IClock {
                                     barCmd.execute();
                                 }
                             }
-                            int time= 60000/beat;
-                            System.out.println(time+" en ms");
+                            int time = 60000 / beat;
+                            System.out.println(time + " en ms");
                             Thread.sleep(time);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
