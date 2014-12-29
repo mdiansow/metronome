@@ -3,6 +3,8 @@ package moteur;
 import command.ICommand;
 
 /**
+ * The metronome engine clock interface
+ * <p>
  * Created by mds on 18/11/14.
  */
 public interface IClock {
@@ -19,7 +21,9 @@ public interface IClock {
 
     void setBeat(int beat);
 
+    int getBar();
+
     void setBar(Integer bar);
 
-    int getBar();
+    boolean isRunning();
 }
