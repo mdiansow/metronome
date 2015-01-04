@@ -52,7 +52,7 @@ public class MainController implements IController {
         if (this.ledBeet != null) {
             this.ledBeet.setTempo(this.me.getTempo());
             this.ledBeet.flash();
-            this.sound.run();
+            this.sound.sendClick();
         }
     }
 
@@ -61,7 +61,7 @@ public class MainController implements IController {
         if (this.ledBar != null) {
             this.ledBar.setTempo(this.me.getTempo());
             this.ledBar.flash();
-            this.sound.run();
+            this.sound.sendClick();
         }
     }
 

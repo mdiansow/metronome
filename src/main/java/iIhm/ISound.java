@@ -1,8 +1,12 @@
 package iIhm;
 
 /**
+ * ISound interface.
  * Created by mds on 01/10/14.
  */
 public interface ISound {
-    public void run();
+    /**
+     * Make a sound
+     */
+    public void sendClick();
 }

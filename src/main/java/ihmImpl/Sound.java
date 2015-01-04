@@ -23,7 +23,7 @@ public class Sound extends Thread implements ISound {
         u1 = getClass().getClassLoader().getResource("beep2.wav");
         s1 = Applet.newAudioClip(u1);
     }
-    public void run() {
+    public void sendClick() {
         s1.play();
     }
 
