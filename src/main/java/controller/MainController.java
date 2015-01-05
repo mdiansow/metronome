@@ -47,7 +47,6 @@ public class MainController implements IController {
         });
     }
 
-    @Override
     public void handleBeatEvent() {
         if (this.ledBeet != null) {
             this.ledBeet.setTempo(this.me.getTempo());
@@ -56,7 +55,6 @@ public class MainController implements IController {
         }
     }
 
-    @Override
     public void handleBarEvent() {
         if (this.ledBar != null) {
             this.ledBar.setTempo(this.me.getTempo());

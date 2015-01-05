@@ -11,10 +11,6 @@ import ihmImpl.Molette;
  */
 public interface IController {
 
-    void handleBeatEvent();
-
-    void handleBarEvent();
-
     void setDisplay(IDisplay display);
 
     void setLedBar(ILed ledBar);
