@@ -8,23 +8,50 @@ import iIhm.*;
  * Created by MDian on 04/01/2015.
  */
 public class Material {
+
+    private static IHorloge horloge;
+    private static IClavier clavier;
+    private static ISpanner spanner;
+    private static ISound sound;
+    private static IViewer viewer;
+
+    /**
+     * Horloge getter
+     * @return
+     */
     static IHorloge getHorloge() {
-        return null;
+        return Material.horloge;
     }
 
+    /**
+     * Clavier getter
+     * @return IClavier
+     */
     static IClavier getClavier() {
-        return null;
+        return Material.clavier;
     }
 
+    /**
+     * Spanner getter
+     * @return ISpanner
+     */
     static ISpanner getSpanner() {
-        return null;
+        return Material.spanner;
     }
 
+    /**
+     * Sound getter
+     * @return ISound
+     */
     static ISound getSound() {
-        return null;
+        return Material.sound;
     }
 
+    /**
+     * Viewer getter
+     * @return IViewer
+     */
     static IViewer getViewer() {
-        return null;
+        return Material.viewer;
     }
 }

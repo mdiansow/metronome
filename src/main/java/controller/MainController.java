@@ -47,7 +47,6 @@ public class MainController implements IController {
         });
     }
 
-    @Override
     public void handleBeatEvent() {
         if (this.ledBeet != null) {
             this.ledBeet.setTempo(this.me.getTempo());
@@ -56,7 +55,6 @@ public class MainController implements IController {
         }
     }
 
-    @Override
     public void handleBarEvent() {
         if (this.ledBar != null) {
             this.ledBar.setTempo(this.me.getTempo());
@@ -85,9 +83,7 @@ public class MainController implements IController {
     @Override
     public void setStartButton(IBouton startButton) {
         this.startButton = startButton;
-
-            this.setStartCmd();
-
+        this.setStartCmd();
     }
 
     @Override
@@ -130,7 +126,7 @@ public class MainController implements IController {
     private void setStartCmd() {
         this.startButton.setCmd(() -> {
             this.stopStartME(true);
-            
+
 
         });
     }

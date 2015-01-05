@@ -10,8 +10,11 @@ import javafx.scene.control.Button;
  */
 public class Bouton implements IBouton {
 
-    Button monBouton;
+    private Button monBouton;
+
     private ICommand cmd;
+
+    private boolean isPressed = false;
 
     public Bouton(Button b1) {
         b1 = monBouton;
@@ -26,5 +29,10 @@ public class Bouton implements IBouton {
     @Override
     public void setCmd(ICommand cmd) {
         this.cmd = cmd;
+    }
+
+    @Override
+    public boolean isPressed() {
+        return this.isPressed;
     }
 }
