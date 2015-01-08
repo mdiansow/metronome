@@ -1,14 +1,13 @@
 package iIhm.iMolette;
 
+import command.ICommand;
+
 /**
- * Spanner interface
- * Created by mds on 17/11/14.
+ * Created by mds on 01/10/14.
  */
 public interface ISpanner {
-    /**
-     * Return the spanner value, it's between 0.0 to 1.0
-     *
-     * @return float
-     */
-    float position();
+
+    public Integer getValue();
+
+    void setChangeValue(ICommand cmd);
 }
