@@ -1,13 +1,7 @@
 package view.ihmImpl;
 
+import controller.IController;
 import controller.MainController;
-import view.iIhm.IIhm;
-import view.iIhm.iAffichage.ILed;
-import view.iIhm.iClavier.IBouton;
-import view.iIhm.iClavier.IClavier;
-import view.iIhm.iMolette.ISpanner;
-import view.iIhm.iMolette.ISpannerAdapter;
-import view.iIhm.iSound.ISound;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -17,6 +11,13 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Ellipse;
+import view.iIhm.IIhm;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iClavier.IClavier;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iMolette.ISpannerAdapter;
+import view.iIhm.iSound.ISound;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -63,7 +64,7 @@ public class Ihm implements Initializable, IIhm {
 
     private ISpanner mol;
 
-    private MainController meController;
+    private IController meController;
     private ISound sound;
 
     private int startIndex;
