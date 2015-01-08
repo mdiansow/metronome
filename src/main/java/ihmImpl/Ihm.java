@@ -58,7 +58,7 @@ public class Ihm implements Initializable {
 
     private Molette mol;
 
-    private MainController meController;
+    private IController meController;
     private ISound sound;
 
     private int startIndex;
