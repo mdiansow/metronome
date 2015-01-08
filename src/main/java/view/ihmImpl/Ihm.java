@@ -1,11 +1,13 @@
-package ihmImpl;
+package view.ihmImpl;
 
 import controller.MainController;
-import iIhm.IIhm;
-import iIhm.iAffichage.ILed;
-import iIhm.iClavier.IBouton;
-import iIhm.iClavier.IClavier;
-import iIhm.iSound.ISound;
+import view.iIhm.IIhm;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iClavier.IClavier;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iMolette.ISpannerAdapter;
+import view.iIhm.iSound.ISound;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -59,28 +61,30 @@ public class Ihm implements Initializable, IIhm {
     @FXML
     private Slider sliderFXML;
 
-    private Molette mol;
+    private ISpanner mol;
 
     private MainController meController;
     private ISound sound;
 
     private int startIndex;
     private IClavier clavier = new Clavier();
+    private ISpannerAdapter spanner = new SpannerAdapterImpl();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         meController = new MainController();
-        startButton = new ButtonAdapter(clavier, START_BUTTON_NUMBER);//new Bouton(startFXML);
-        stopButton = new ButtonAdapter(clavier, STOP_BUTTON_NUMBER);//*/Bouton(stopFXML);
-        incrButton = new ButtonAdapter(clavier, INCR_BUTTON_NUMBER);//new Bouton(incrFXML);
-        decrButton = new ButtonAdapter(clavier, DECRE_BUTTON_NUMBER);//new Bouton(decrFXML);
+        startButton = new ButtonAdapter(clavier, START_BUTTON_NUMBER, Material.getHorloge());//new Bouton(startFXML);
+        stopButton = new ButtonAdapter(clavier, STOP_BUTTON_NUMBER, Material.getHorloge());//*/Bouton(stopFXML);
+        incrButton = new ButtonAdapter(clavier, INCR_BUTTON_NUMBER, Material.getHorloge());//new Bouton(incrFXML);
+        decrButton = new ButtonAdapter(clavier, DECRE_BUTTON_NUMBER, Material.getHorloge());//new Bouton(decrFXML);
 
         led1 = new Led(ledBeetFXML);
         led2 = new Led(ledBarFXML);
 
         tempoField.setEditable(false);
         display = new Display(tempoField);
-        mol = new Molette(sliderFXML);
+        mol = new SpannerImpl(spanner, Material.getHorloge());//Molette(sliderFXML);
 
         // Sound
         sound = new Sound();
@@ -90,17 +94,17 @@ public class Ihm implements Initializable, IIhm {
         // Slider
         sliderFXML.setShowTickLabels(true);
         sliderFXML.setShowTickMarks(true);
-        meController.setMolette(mol);
         sliderFXML.valueProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
-                mol.setSliderValue(newValue.intValue());
+                spanner.setSpannerValue(newValue.intValue());
+                // mol.setSliderValue(newValue.intValue());
             }
         });
 
         // Set Controller
         meController.setDisplay(display);
-
+        meController.setMolette(mol);
         meController.setStartButton(startButton);
         meController.setStopButton(stopButton);
         meController.setIncrButton(incrButton);

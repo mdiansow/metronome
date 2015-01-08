@@ -1,9 +1,9 @@
-package ihmImpl;
+package view.ihmImpl;
 
 import command.ICommand;
-import iIhm.iClavier.IBouton;
-import iIhm.iClavier.IClavier;
-import iIhm.iHorloge.IHorloge;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iClavier.IClavier;
+import view.iIhm.iHorloge.IHorloge;
 
 /**
  * Created by mds on 06/01/15.
@@ -25,10 +25,10 @@ public class ButtonAdapter implements IBouton {
      *
      * @param clavier IClavier
      */
-    public ButtonAdapter(IClavier clavier, int numButton) {
+    public ButtonAdapter(IClavier clavier, int numButton, IHorloge h) {
         this.clavier = clavier;
         this.numButton = numButton;
-        horloge = new Horloge();
+        horloge = h;
         horloge.activatePeriodically(() -> {
             click();
         }, PERIODE_IN_MILLISECOND);
@@ -50,7 +50,6 @@ public class ButtonAdapter implements IBouton {
             // this.horloge.deActivate(cmd);
         }
         keyPressed = isPressed;
-        System.out.println("Key ==== " + numButton + " === is " + keyPressed);
     }
 
     /**
@@ -64,6 +63,6 @@ public class ButtonAdapter implements IBouton {
     }
 
     public static void main(String[] args) {
-        new ButtonAdapter(null, 1);
+        new ButtonAdapter(null, 1,null);
     }
 }

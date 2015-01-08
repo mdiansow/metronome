@@ -1,6 +1,6 @@
-package ihmImpl;
+package view.ihmImpl;
 
-import iIhm.iAffichage.IDisplay;
+import view.iIhm.iAffichage.IDisplay;
 import javafx.application.Platform;
 import javafx.scene.control.TextField;
 
@@ -35,7 +35,7 @@ public class Display implements IDisplay {
     @Override
     public void display(Integer tempo) {
         Platform.runLater(() -> {
+            lazone.setText(tempo.toString());
         });
-        lazone.setText(tempo.toString());
     }
 }

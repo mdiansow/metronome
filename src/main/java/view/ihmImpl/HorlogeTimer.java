@@ -1,7 +1,7 @@
-package ihmImpl;
+package view.ihmImpl;
 
 import command.ICommand;
-import iIhm.iHorloge.IHorloge;
+import view.iIhm.iHorloge.IHorloge;
 
 import java.util.Timer;
 import java.util.TimerTask;

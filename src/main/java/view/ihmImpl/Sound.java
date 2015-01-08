@@ -1,6 +1,6 @@
-package ihmImpl;
+package view.ihmImpl;
 
-import iIhm.iSound.ISound;
+import view.iIhm.iSound.ISound;
 
 import javax.sound.sampled.*;
 import java.applet.Applet;
@@ -18,7 +18,7 @@ public class Sound extends Thread implements ISound {
     private AudioClip s1;
 
     public Sound() {
-        u1 = getClass().getClassLoader().getResource("beep2.wav");
+        u1 = getClass().getClassLoader().getResource("losticks.wav");
         s1 = Applet.newAudioClip(u1);
     }
     public void sendClick() {

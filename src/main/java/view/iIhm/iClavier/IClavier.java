@@ -1,4 +1,4 @@
-package iIhm.iClavier;
+package view.iIhm.iClavier;
 
 /**
  * Keyboard interface

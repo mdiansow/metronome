@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="530.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ihmImpl.Ihm">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="530.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ihmImpl.Ihm">
     <children>
         <Button fx:id="startFXML" layoutX="87.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonStart" text="Start" />
         <Button fx:id="stopFXML" disable="true" layoutX="174.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonStop" text="Stop" />

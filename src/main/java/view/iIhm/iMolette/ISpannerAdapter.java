@@ -1,4 +1,4 @@
-package iIhm.iMolette;
+package view.iIhm.iMolette;
 
 /**
  * Spanner interface
@@ -8,7 +8,9 @@ public interface ISpannerAdapter {
     /**
      * Return the spanner value, it's between 0.0 to 1.0
      *
-     * @return float
+     * @return int
      */
-    float position();
+    int position();
+
+    void setSpannerValue(int i);
 }

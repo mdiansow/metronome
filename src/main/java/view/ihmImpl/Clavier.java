@@ -1,6 +1,6 @@
-package ihmImpl;
+package view.ihmImpl;
 
-import iIhm.iClavier.IClavier;
+import view.iIhm.iClavier.IClavier;
 
 /**
  * Clavier class implement

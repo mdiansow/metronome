@@ -1,11 +1,10 @@
 package controller;
 
-import iIhm.iAffichage.IDisplay;
-import iIhm.iClavier.IBouton;
-import iIhm.iAffichage.ILed;
-import iIhm.iMolette.IMolette;
-import iIhm.iSound.ISound;
-import ihmImpl.Molette;
+import view.iIhm.iAffichage.IDisplay;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iSound.ISound;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
 
@@ -25,7 +24,7 @@ public class MainController implements IController {
     private IBouton incrButton;
     private IBouton decrButton;
     private ISound sound;
-    private IMolette molette;
+    private ISpanner molette;
 
     public MainController() {
         this.me = new MetronomeEngineImpl(30, 4);
@@ -43,12 +42,9 @@ public class MainController implements IController {
     }
 
     @Override
-    public void setMolette(Molette mol) {
+    public void setMolette(ISpanner mol) {
         this.molette = mol;
-        this.molette.setChangeValue(() -> {
-            this.me.setTempo(this.molette.getValue());
-            this.display.display(this.me.getTempo());
-        });
+        this.setMoletteCmd();
     }
 
     public void handleBeatEvent() {
@@ -56,6 +52,7 @@ public class MainController implements IController {
             this.ledBeet.setTempo(this.me.getTempo());
             this.ledBeet.flash();
             this.sound.sendClick();
+            this.display.display(this.me.getTempo());
         }
     }
 
@@ -102,6 +99,15 @@ public class MainController implements IController {
         this.setDecrCmd();
     }
 
+
+    private void setMoletteCmd() {
+        this.molette.setMoletteCmd(() -> {
+            int tempo = this.molette.getValue();
+            System.out.println("Mon tempo " + tempo);
+            this.me.setTempo(tempo);
+        });
+    }
+
     private void setDecrCmd() {
         this.decrButton.setClickedCmd(() -> {
             this.me.setBarLength(this.me.getBarLength() - 1);
@@ -112,7 +118,7 @@ public class MainController implements IController {
     private void setIncrCmd() {
         this.incrButton.setClickedCmd(() -> {
             this.me.setBarLength(this.me.getBarLength() + 1);
-           // this.display.display(this.me.getTempo());
+            // this.display.display(this.me.getTempo());
         });
     }
 
@@ -130,8 +136,6 @@ public class MainController implements IController {
     private void setStartCmd() {
         this.startButton.setClickedCmd(() -> {
             this.stopStartME(true);
-
-
         });
     }
 

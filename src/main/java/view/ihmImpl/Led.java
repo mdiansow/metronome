@@ -1,6 +1,6 @@
-package ihmImpl;
+package view.ihmImpl;
 
-import iIhm.iAffichage.ILed;
+import view.iIhm.iAffichage.ILed;
 import javafx.animation.FillTransition;
 import javafx.animation.Transition;
 import javafx.application.Platform;

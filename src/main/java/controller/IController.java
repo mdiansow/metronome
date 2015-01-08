@@ -1,10 +1,10 @@
 package controller;
 
-import iIhm.iClavier.IBouton;
-import iIhm.iAffichage.IDisplay;
-import iIhm.iAffichage.ILed;
-import iIhm.iSound.ISound;
-import ihmImpl.Molette;
+import view.iIhm.iAffichage.IDisplay;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iSound.ISound;
 
 /**
  * Created by mds on 01/10/14.
@@ -27,5 +27,5 @@ public interface IController {
 
     void setSound(ISound sound);
 
-    void setMolette(Molette mol);
+    void setMolette(ISpanner mol);
 }

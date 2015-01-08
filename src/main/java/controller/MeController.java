@@ -1,10 +1,10 @@
 package controller;
 
-import iIhm.iClavier.IBouton;
-import iIhm.iAffichage.IDisplay;
-import iIhm.iAffichage.ILed;
-import iIhm.iSound.ISound;
-import ihmImpl.Molette;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iAffichage.IDisplay;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iSound.ISound;
 
 /**
  * Created by mds on 05/01/15.
@@ -52,7 +52,7 @@ public class MeController implements IController {
     }
 
     @Override
-    public void setMolette(Molette mol) {
+    public void setMolette(ISpanner mol) {
 
     }
 }

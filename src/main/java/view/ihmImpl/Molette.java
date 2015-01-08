@@ -1,13 +1,15 @@
-package ihmImpl;
+package view.ihmImpl;
 
 import command.ICommand;
-import iIhm.iMolette.IMolette;
+import view.iIhm.iMolette.ISpanner;
 import javafx.scene.control.Slider;
 
 /**
+ * Implement the ISpanner interface.
+ *
  * Created by jerem on 14/11/14.
  */
-public class Molette implements IMolette {
+public class Molette implements ISpanner {
 
     private Slider pgb;
 
@@ -18,6 +20,10 @@ public class Molette implements IMolette {
         pgb = apgb;
     }
 
+    /**
+     *
+     * @param sliderValue
+     */
     public void setSliderValue(int sliderValue) {
         this.sliderValue = sliderValue;
         this.cmd.execute();
@@ -29,7 +35,7 @@ public class Molette implements IMolette {
     }
 
     @Override
-    public void setChangeValue(ICommand cmd) {
+    public void setMoletteCmd(ICommand cmd) {
         this.cmd = cmd;
     }
 

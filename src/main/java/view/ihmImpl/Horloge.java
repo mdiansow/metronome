@@ -1,7 +1,10 @@
-package ihmImpl;
+package view.ihmImpl;
 
 import command.ICommand;
-import iIhm.iHorloge.IHorloge;
+import view.iIhm.iHorloge.IHorloge;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by mds on 07/01/15.
@@ -11,6 +14,8 @@ public class Horloge implements IHorloge {
     private boolean isRunning = false;
     private long time;
     private ICommand cmd;
+
+    private List<ICommand> listCmd = new ArrayList<>();
 
     /**
      * Create the thread like timer.
@@ -25,10 +30,12 @@ public class Horloge implements IHorloge {
             public void run() {
 
                 while (true) {
-                    if (isRunning) {
+                    if (isRunning && listCmd.size() > 0) {
                         try {
                             Thread.sleep(time);
-                            cmd.execute();
+                            for (ICommand cmd : listCmd) {
+                                cmd.execute();
+                            }
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
@@ -42,7 +49,7 @@ public class Horloge implements IHorloge {
 
     @Override
     public void activatePeriodically(ICommand cmd, int periodInSecond) {
-        this.cmd = cmd;
+        this.listCmd.add(cmd);
         time = periodInSecond;
         thread = createThread();
         thread.start();

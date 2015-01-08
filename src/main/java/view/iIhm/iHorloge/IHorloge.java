@@ -1,4 +1,4 @@
-package iIhm.iHorloge;
+package view.iIhm.iHorloge;
 
 import command.ICommand;
 
