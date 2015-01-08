@@ -1,6 +1,6 @@
 package ihmImpl;
 
-import iIhm.IDisplay;
+import iIhm.iAffichage.IDisplay;
 import javafx.application.Platform;
 import javafx.scene.control.TextField;
 

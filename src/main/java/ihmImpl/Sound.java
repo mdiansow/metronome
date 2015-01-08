@@ -1,12 +1,10 @@
 package ihmImpl;
 
-import iIhm.ISound;
+import iIhm.iSound.ISound;
 
 import javax.sound.sampled.*;
 import java.applet.Applet;
 import java.applet.AudioClip;
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 
 /**

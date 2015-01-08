@@ -1,7 +1,7 @@
 package ihmImpl;
 
 import command.ICommand;
-import iIhm.IMolette;
+import iIhm.iMolette.IMolette;
 import javafx.scene.control.Slider;
 
 /**

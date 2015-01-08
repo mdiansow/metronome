@@ -1,4 +1,4 @@
-package iIhm;
+package iIhm.iMolette;
 
 /**
  * Spanner interface

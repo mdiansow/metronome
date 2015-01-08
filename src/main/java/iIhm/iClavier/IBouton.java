@@ -1,4 +1,4 @@
-package iIhm;
+package iIhm.iClavier;
 
 import command.ICommand;
 
@@ -15,13 +15,14 @@ public interface IBouton {
 
     /**
      * Command setter
+     *
      * @param cmd ICommand
      */
-    void setCmd(ICommand cmd);
+    void setClickedCmd(ICommand cmd);
 
-    /**
-     * Return true if this is pressed
-     * @return boolean
-     */
-    boolean isPressed();
+//    /**
+//     * Return true if this is pressed
+//     * @return boolean
+//     */
+//    boolean isPressed();
 }

@@ -1,6 +1,10 @@
 package controller;
 
-import iIhm.*;
+import iIhm.iAffichage.IDisplay;
+import iIhm.iClavier.IBouton;
+import iIhm.iAffichage.ILed;
+import iIhm.iMolette.IMolette;
+import iIhm.iSound.ISound;
 import ihmImpl.Molette;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
@@ -99,21 +103,21 @@ public class MainController implements IController {
     }
 
     private void setDecrCmd() {
-        this.decrButton.setCmd(() -> {
+        this.decrButton.setClickedCmd(() -> {
             this.me.setBarLength(this.me.getBarLength() - 1);
-            this.display.display(this.me.getTempo());
+            // this.display.display(this.me.getTempo());
         });
     }
 
     private void setIncrCmd() {
-        this.incrButton.setCmd(() -> {
+        this.incrButton.setClickedCmd(() -> {
             this.me.setBarLength(this.me.getBarLength() + 1);
-            this.display.display(this.me.getTempo());
+           // this.display.display(this.me.getTempo());
         });
     }
 
     private void setStopCmd() {
-        this.stopButton.setCmd(() -> {
+        this.stopButton.setClickedCmd(() -> {
             this.stopStartME(false);
         });
     }
@@ -124,7 +128,7 @@ public class MainController implements IController {
     }
 
     private void setStartCmd() {
-        this.startButton.setCmd(() -> {
+        this.startButton.setClickedCmd(() -> {
             this.stopStartME(true);
 
 

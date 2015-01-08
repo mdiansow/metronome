@@ -1,4 +1,4 @@
-package iIhm;
+package iIhm.iAffichage;
 
 /**
  * Created by mds on 01/10/14.

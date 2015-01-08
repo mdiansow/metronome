@@ -1,9 +1,9 @@
 package controller;
 
-import iIhm.IBouton;
-import iIhm.IDisplay;
-import iIhm.ILed;
-import iIhm.ISound;
+import iIhm.iClavier.IBouton;
+import iIhm.iAffichage.IDisplay;
+import iIhm.iAffichage.ILed;
+import iIhm.iSound.ISound;
 import ihmImpl.Molette;
 
 /**

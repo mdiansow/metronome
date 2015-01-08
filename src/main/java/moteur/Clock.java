@@ -37,7 +37,6 @@ public class Clock implements IClock {
         Thread t = createThread();
         t.start();
         isRunning = true;
-
     }
 
     /**

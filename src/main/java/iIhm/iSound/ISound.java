@@ -1,4 +1,4 @@
-package iIhm;
+package iIhm.iSound;
 
 /**
  * ISound interface.

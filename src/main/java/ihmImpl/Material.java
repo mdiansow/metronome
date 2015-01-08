@@ -1,6 +1,10 @@
 package ihmImpl;
 
-import iIhm.*;
+import iIhm.iClavier.IClavier;
+import iIhm.iAffichage.IViewer;
+import iIhm.iHorloge.IHorloge;
+import iIhm.iMolette.ISpanner;
+import iIhm.iSound.ISound;
 
 /**
  * Material class

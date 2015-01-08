@@ -1,4 +1,4 @@
-package iIhm;
+package iIhm.iAffichage;
 
 /**
  * Display interface

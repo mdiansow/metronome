@@ -1,7 +1,7 @@
 package ihmImpl;
 
 import command.ICommand;
-import iIhm.IBouton;
+import iIhm.iClavier.IBouton;
 import javafx.scene.control.Button;
 
 
@@ -14,8 +14,6 @@ public class Bouton implements IBouton {
 
     private ICommand cmd;
 
-    private boolean isPressed = false;
-
     public Bouton(Button b1) {
         b1 = monBouton;
     }
@@ -27,12 +25,8 @@ public class Bouton implements IBouton {
     }
 
     @Override
-    public void setCmd(ICommand cmd) {
+    public void setClickedCmd(ICommand cmd) {
         this.cmd = cmd;
     }
 
-    @Override
-    public boolean isPressed() {
-        return this.isPressed;
-    }
 }
