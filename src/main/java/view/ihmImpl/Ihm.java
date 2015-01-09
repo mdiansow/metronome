@@ -57,7 +57,7 @@ public class Ihm implements Initializable, IIhm {
     @FXML
     private TextField tempoField;
 
-    private Display display;
+    private IDisplay display;
 
     @FXML
     private Slider sliderFXML;
