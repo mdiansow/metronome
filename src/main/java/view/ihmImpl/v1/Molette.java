@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.v1;
 
 import command.ICommand;
 import view.iIhm.iMolette.ISpanner;

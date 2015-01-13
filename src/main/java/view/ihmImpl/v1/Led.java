@@ -1,12 +1,12 @@
-package view.ihmImpl;
+package view.ihmImpl.v1;
 
-import view.iIhm.iAffichage.ILed;
 import javafx.animation.FillTransition;
 import javafx.animation.Transition;
 import javafx.application.Platform;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 import javafx.util.Duration;
+import view.iIhm.iAffichage.ILed;
 
 
 /**
@@ -25,18 +25,17 @@ public class Led implements ILed {
     }
 
     @Override
-    public void flash() {
-            Platform.runLater(() -> {
-            });
+    public void flash(int tempo) {
+        Platform.runLater(() -> {
             Transition transition = new FillTransition(Duration.millis(400), monEllipse, Color.RED, Color.BLACK);
-            transition.setAutoReverse(true);
+            transition.setAutoReverse(false);
             transition.play();
-        }
-
-
-
-    @Override
-    public void setTempo(int s) {
-        this.tempo = s;
+        });
     }
+
+
+//    @Override
+//    public void setTempo(int s) {
+//        this.tempo = s;
+//    }
 }

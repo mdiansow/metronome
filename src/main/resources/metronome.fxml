@@ -1,17 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.text.Font?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="530.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ihmImpl.Ihm">
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="246.0" prefWidth="515.0" style="-fx-background-color: grey;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ihmImpl.Ihm">
     <children>
-        <Button fx:id="startFXML" layoutX="87.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonStart" text="Start" />
-        <Button fx:id="stopFXML" disable="true" layoutX="174.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonStop" text="Stop" />
-        <Button fx:id="incrFXML" disable="true" layoutX="264.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonInc" text="Increment" />
-        <Button fx:id="decrFXML" disable="true" layoutX="366.0" layoutY="198.0" mnemonicParsing="false" onAction="#actionButtonDecrement" text="Decrement" />
-        <Ellipse fx:id="ledBeetFXML" layoutX="475.0" layoutY="119.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
+      <Group layoutX="33.0">
+         <children>
+              <Button fx:id="incrFXML" contentDisplay="CENTER" disable="true" layoutX="240.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionButtonInc" rotate="-22.4" text="Incr" textAlignment="CENTER" textFill="#eb0707" textOverrun="WORD_ELLIPSIS">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Button>
+              <Button fx:id="decrFXML" contentDisplay="CENTER" disable="true" layoutX="320.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionButtonDecrement" rotate="-22.4" text="Decr" textAlignment="CENTER" textFill="#eb0707" textOverrun="WORD_ELLIPSIS">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Button>
+              <Button fx:id="stopFXML" contentDisplay="CENTER" disable="true" layoutX="160.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionButtonStop" rotate="-22.4" text="Stop" textAlignment="CENTER" textFill="#eb0707" textOverrun="WORD_ELLIPSIS">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Button>
+              <Button fx:id="startFXML" contentDisplay="CENTER" layoutX="80.0" layoutY="200.0" mnemonicParsing="false" onAction="#actionButtonStart" rotate="-22.4" text="Start" textAlignment="CENTER" textFill="#eb0707" textOverrun="WORD_ELLIPSIS">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Button>
+         </children>
+      </Group>
+        <Ellipse fx:id="ledBeetFXML" layoutX="462.0" layoutY="112.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
             <effect>
                 <Lighting>
                     <bumpInput>
@@ -23,7 +52,7 @@
                 </Lighting>
             </effect>
         </Ellipse>
-        <Ellipse fx:id="ledBarFXML" layoutX="476.0" layoutY="57.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
+        <Ellipse fx:id="ledBarFXML" layoutX="463.0" layoutY="50.0" radiusX="19.0" radiusY="18.0" stroke="BLACK" strokeType="INSIDE">
             <effect>
                 <Lighting>
                     <bumpInput>
@@ -35,17 +64,49 @@
                 </Lighting>
             </effect>
         </Ellipse>
-        <Slider fx:id="sliderFXML" blockIncrement="5.0" disable="true" layoutX="35.0" layoutY="24.0" max="120.0" min="1.0" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" value="30" />
-        <TextField fx:id="tempoField" alignment="BASELINE_CENTER" layoutX="112.0" layoutY="33.0" prefHeight="85.0" prefWidth="286.0" promptText="BEAT">
-            <font>
-                <Font name="System Bold" size="45.0" />
-            </font>
+        <Slider fx:id="sliderFXML" blockIncrement="1.0" disable="true" layoutX="35.0" layoutY="24.0" max="150.0" min="20.0" minorTickCount="5" orientation="VERTICAL" prefHeight="199.0" prefWidth="15.0" showTickLabels="true" showTickMarks="true" value="25.0" />
+        <TextField fx:id="tempoFieldFXML" alignment="BASELINE_CENTER" disable="true" layoutX="112.0" layoutY="41.0" opacity="0.92" prefHeight="77.0" prefWidth="286.0" promptText="BEAT" text="30">
             <effect>
                 <Glow>
                <input>
                   <Reflection />
                </input></Glow>
             </effect>
+         <cursor>
+            <Cursor fx:constant="NE_RESIZE" />
+         </cursor>
+         <font>
+            <Font name="Droid Sans Bold" size="45.0" />
+         </font>
         </TextField>
+      <TextField fx:id="mesureFXML" alignment="CENTER" disable="true" layoutX="418.0" layoutY="146.0" minHeight="-Infinity" prefHeight="36.0" prefWidth="80.0" text="0">
+         <effect>
+            <BoxBlur height="1.0" />
+         </effect>
+         <font>
+            <Font name="System Bold" size="17.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="SE_RESIZE" />
+         </cursor>
+      </TextField>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="420.0" layoutY="184.0" minHeight="-Infinity" prefHeight="15.0" prefWidth="80.0" text="MESURE">
+         <textFill>
+            <RadialGradient centerX="0.6179775280898876" centerY="0.6490384615384615" cycleMethod="REFLECT" radius="0.5">
+               <stops>
+                  <Stop color="#bf1616" />
+                  <Stop color="#bf1616" offset="0.007407407407407408" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </RadialGradient>
+         </textFill>
+      </Label>
     </children>
+   <effect>
+      <DisplacementMap wrap="true">
+         <mapData>
+            <FloatMap />
+         </mapData>
+      </DisplacementMap>
+   </effect>
 </Pane>

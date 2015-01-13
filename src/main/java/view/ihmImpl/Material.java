@@ -1,10 +1,13 @@
 package view.ihmImpl;
 
 import view.iIhm.iClavier.IClavier;
-import view.iIhm.iAffichage.IViewer;
+import view.iIhm.iAffichage.IViewerAdapter;
 import view.iIhm.iHorloge.IHorloge;
 import view.iIhm.iMolette.ISpannerAdapter;
 import view.iIhm.iSound.ISound;
+import view.ihmImpl.clavierImpl.Clavier;
+import view.ihmImpl.moletteImpl.SpannerAdapterImpl;
+import view.ihmImpl.v1.Sound;
 
 /**
  * Material class
@@ -17,7 +20,7 @@ public class Material {
     private static IClavier clavier = new Clavier();
     private static ISpannerAdapter spanner = new SpannerAdapterImpl();
     private static ISound sound = new Sound();
-    private static IViewer viewer;
+    private static IViewerAdapter viewer;
 
     /**
      * Horloge getter
@@ -55,7 +58,7 @@ public class Material {
      * Viewer getter
      * @return IViewer
      */
-    static IViewer getViewer() {
+    static IViewerAdapter getViewer() {
         return Material.viewer;
     }
 }

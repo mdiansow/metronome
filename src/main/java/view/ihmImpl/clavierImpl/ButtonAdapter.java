@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.clavierImpl;
 
 import command.ICommand;
 import view.iIhm.iClavier.IBouton;
@@ -16,7 +16,7 @@ public class ButtonAdapter implements IBouton {
     private IHorloge horloge;
 
     private static final int MAX_ACTTIVE_BUTTON_NUMBER = 3;
-    private static final int PERIODE_IN_MILLISECOND = 500;
+    private static final int PERIODE_IN_MILLISECOND = 50;
     private boolean keyPressed = true;
     private int countActiveButton = 0;
 

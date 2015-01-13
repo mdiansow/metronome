@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.moletteImpl;
 
 import view.iIhm.iMolette.ISpannerAdapter;
 

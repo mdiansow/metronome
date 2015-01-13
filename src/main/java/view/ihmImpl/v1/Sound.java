@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.v1;
 
 import view.iIhm.iSound.ISound;
 
@@ -21,6 +21,7 @@ public class Sound extends Thread implements ISound {
         u1 = getClass().getClassLoader().getResource("losticks.wav");
         s1 = Applet.newAudioClip(u1);
     }
+    @Override
     public void sendClick() {
         s1.play();
     }

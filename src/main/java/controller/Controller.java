@@ -1,18 +1,23 @@
 package controller;
 
-import view.iIhm.iAffichage.IDisplay;
-import view.iIhm.iClavier.IBouton;
-import view.iIhm.iAffichage.ILed;
-import view.iIhm.iMolette.ISpanner;
-import view.iIhm.iSound.ISound;
 import moteur.IMetronomeEngine;
 import moteur.MetronomeEngineImpl;
+import view.iIhm.iAffichage.IDisplay;
+import view.iIhm.iAffichage.ILed;
+import view.iIhm.iClavier.IBouton;
+import view.iIhm.iMolette.ISpanner;
+import view.iIhm.iSound.ISound;
 
 /**
+ * The implementation of app controller
  * Created by jerem on 24/10/14.
  */
-public class MainController implements IController {
-    private static final Integer INCREMENT = 10;
+public class Controller implements IController {
+
+    private final static Controller CONTROLLER = new Controller();
+
+    private static final String BEAT_SOUND = "losticks.wav";
+    private static final String BAR_SOUND = "hi conga.wav";
 
     private IDisplay display;
     private ILed ledBar;
@@ -26,7 +31,7 @@ public class MainController implements IController {
     private ISound sound;
     private ISpanner molette;
 
-    public MainController() {
+    public Controller() {
         this.me = new MetronomeEngineImpl(30, 4);
         this.me.setBeatCmd(() -> {
             handleBeatEvent();
@@ -36,67 +41,133 @@ public class MainController implements IController {
         });
     }
 
+    /**
+     * Singleton of controller.
+     *
+     * @return IController.
+     */
+    public static IController getInstance() {
+        return CONTROLLER;
+    }
+
+    /**
+     * Soud setter.
+     *
+     * @param sound ISound
+     */
     @Override
     public void setSound(ISound sound) {
         this.sound = sound;
     }
 
+    /**
+     * Molette setter.
+     *
+     * @param mol ISpanner
+     */
     @Override
     public void setMolette(ISpanner mol) {
         this.molette = mol;
         this.setMoletteCmd();
     }
 
+    /**
+     * Handle the beat event.
+     * It is call when the Metronome engine beat change.
+     */
     public void handleBeatEvent() {
         if (this.ledBeet != null) {
-            this.ledBeet.setTempo(this.me.getTempo());
-            this.ledBeet.flash();
+            // this.ledBeet.setTempo(this.me.getTempo());
+            this.ledBeet.flash(this.me.getTempo());
             this.sound.sendClick();
-            this.display.display(this.me.getTempo());
+            this.display.display(this.me.getTempo(), this.me.getBarLength());
         }
     }
 
+    /**
+     * Handle the bar event.
+     * It is call when the Metronome engine bar change.
+     */
     public void handleBarEvent() {
         if (this.ledBar != null) {
-            this.ledBar.setTempo(this.me.getTempo());
-            this.ledBar.flash();
+            this.ledBar.flash(this.me.getTempo());
             this.sound.sendClick();
         }
     }
 
+    /**
+     * Display setter
+     *
+     * @param display IDisplay
+     */
     @Override
     public void setDisplay(IDisplay display) {
         this.display = display;
-        this.display.display(this.me.getTempo());
+        this.display.display(this.me.getTempo(), this.me.getBarLength());
     }
 
+    /**
+     * Led of beat setter
+     *
+     * @param ledBeet ILed
+     */
     @Override
     public void setLedBeet(ILed ledBeet) {
         this.ledBeet = ledBeet;
     }
 
+    /**
+     * Stop button setter
+     *
+     * @param stopButton IBouton
+     */
     @Override
     public void setStopButton(IBouton stopButton) {
         this.stopButton = stopButton;
         this.setStopCmd();
     }
 
+    /**
+     * Start button setter.
+     *
+     * @param startButton IBouton
+     */
     @Override
     public void setStartButton(IBouton startButton) {
         this.startButton = startButton;
         this.setStartCmd();
     }
 
+    /**
+     * Increment button setter.
+     *
+     * @param incrButton IBouton
+     */
     @Override
     public void setIncrButton(IBouton incrButton) {
         this.incrButton = incrButton;
         this.setIncrCmd();
     }
 
+    /**
+     * Decrement button setter.
+     *
+     * @param decrButton IBouton
+     */
     @Override
     public void setDecrButton(IBouton decrButton) {
         this.decrButton = decrButton;
         this.setDecrCmd();
+    }
+
+    /**
+     * Setter of led bar.
+     *
+     * @param ledBar ILed
+     */
+    @Override
+    public void setLedBar(ILed ledBar) {
+        this.ledBar = ledBar;
     }
 
 
@@ -128,11 +199,6 @@ public class MainController implements IController {
         });
     }
 
-    @Override
-    public void setLedBar(ILed ledBar) {
-        this.ledBar = ledBar;
-    }
-
     private void setStartCmd() {
         this.startButton.setClickedCmd(() -> {
             this.stopStartME(true);
@@ -143,21 +209,4 @@ public class MainController implements IController {
         this.me.setRunning(b);
     }
 
-
-//    public static void main(String[] args) {
-//        MainController c = new MainController();
-//        // ICommand beatCmd = new BeetEvnt(c);
-//        c.getMe().setRunning(true);
-//        c.getMe().setBeatCmd(() -> c.handleBeatEvent());
-//        c.getMe().setBarCmd(() -> c.handleBarEvent());
-//        Scanner scanner = new Scanner(System.in);
-//
-//        System.out.println("la valeur");
-//        boolean b = scanner.nextBoolean();
-//        while (b) {
-//            System.out.println("la valeur");
-//            b = scanner.nextBoolean();
-//            c.getMe().setRunning(b);
-//        }
-//    }
 }

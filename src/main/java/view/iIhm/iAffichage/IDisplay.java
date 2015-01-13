@@ -4,5 +4,5 @@ package view.iIhm.iAffichage;
  * Created by mds on 01/10/14.
  */
 public interface IDisplay {
-    void display(Integer tempo);
+    void display(Integer tempo, Integer barLength);
 }

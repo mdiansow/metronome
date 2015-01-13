@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.moletteImpl;
 
 import command.ICommand;
 import view.iIhm.iHorloge.IHorloge;
@@ -16,7 +16,7 @@ public class SpannerImpl implements ISpanner {
     private ISpannerAdapter spannerAdapter;
     private int sliderValue;
 
-    private static final int PERIODE_IN_MILLISECOND = 500;
+    private static final int PERIODE_IN_MILLISECOND = 50;
 
     public SpannerImpl(ISpannerAdapter spannerAdapter, IHorloge h) {
         this.spannerAdapter = spannerAdapter;

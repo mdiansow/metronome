@@ -1,4 +1,4 @@
-package view.ihmImpl;
+package view.ihmImpl.clavierImpl;
 
 import view.iIhm.iClavier.IClavier;
 
