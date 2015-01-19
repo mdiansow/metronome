@@ -1,5 +1,6 @@
 package ihmImpl;
 
+import controller.IController;
 import controller.MainController;
 import iIhm.IBouton;
 import iIhm.ILed;
@@ -9,15 +10,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
 import javafx.scene.control.Button;
+import javafx.scene.control.Slider;
 import javafx.scene.control.TextField;
-import javafx.scene.paint.*;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Ellipse;
 
-import java.awt.*;
-import java.awt.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
