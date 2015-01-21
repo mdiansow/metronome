@@ -42,36 +42,55 @@
                 <artifactId>maven-javadoc-plugin</artifactId>
                 <version>2.9.1</version>
                 <configuration>
-                    <tags>
-                        <tag>
-                            <name>type</name>
-                            <placement>m</placement>
-                            <head>Type:</head>
-                            new
-                        </tag>
-                        <tag>
-                            <name>input</name>
-                            <placement>m</placement>
-                            <head>Input:</head>
-                        </tag>
-                        <tag>
-                            <name>oracle</name>
-                            <placement>m</placement>
-                            <head>Oracle:</head>
-                        </tag>
-                        <tag>
-                            <name>passed</name>
-                            <placement>m</placement>
-                            <head>Passed:</head>
-                        </tag>
-                        <tag>
-                            <name>correction</name>
-                            <placement>m</placement>
-                            <head>Correction:</head>
-                        </tag>
-                    </tags>
+                    <outputDirectory>${project.build.directory}/javadoc</outputDirectory>
+                    <reportOutputDirectory>${project.reporting.outputDirectory}/javadoc</reportOutputDirectory>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>site</phase>
+                        <goals>
+                            <goal>aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
+
+            <!--<plugin>-->
+            <!--<groupId>org.apache.maven.plugins</groupId>-->
+            <!--<artifactId>maven-javadoc-plugin</artifactId>-->
+            <!--<version>2.9.1</version>-->
+            <!--<configuration>-->
+            <!--<tags>-->
+            <!--<tag>-->
+            <!--<name>type</name>-->
+            <!--<placement>m</placement>-->
+            <!--<head>Type:</head>-->
+            <!--new-->
+            <!--</tag>-->
+            <!--<tag>-->
+            <!--<name>input</name>-->
+            <!--<placement>m</placement>-->
+            <!--<head>Input:</head>-->
+            <!--</tag>-->
+            <!--<tag>-->
+            <!--<name>oracle</name>-->
+            <!--<placement>m</placement>-->
+            <!--<head>Oracle:</head>-->
+            <!--</tag>-->
+            <!--<tag>-->
+            <!--<name>passed</name>-->
+            <!--<placement>m</placement>-->
+            <!--<head>Passed:</head>-->
+            <!--</tag>-->
+            <!--<tag>-->
+            <!--<name>correction</name>-->
+            <!--<placement>m</placement>-->
+            <!--<head>Correction:</head>-->
+            <!--</tag>-->
+            <!--</tags>-->
+            <!--</configuration>-->
+            <!--</plugin>-->
 
             <!-- Jacoco (code coverage) plugin -->
             <plugin>
