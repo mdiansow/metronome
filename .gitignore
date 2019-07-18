@@ -1,0 +1,36 @@
+HELP.md
+/target/
+.mvn
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.ipr
+*.iml
+taf-ym-prevcoll-api.iml
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+## Liquibase
+databasechangelog.csv
+databasechangelog.csv.new
+
+# JPA
+**hibernate.cfg.xml
+pom.xml.releaseBackup
+release.properties
